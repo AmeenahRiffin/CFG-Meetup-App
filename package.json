@@ -1,0 +1,17 @@
+{
+  "name": "cfg-meetup-app",
+  "version": "1.0.0",
+  "description": "A meetup application for helping people find people in their local communities with similar hobbies. Group assignment project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.1",
+    "react-bootstrap": "^2.10.5"
+  }
+}
