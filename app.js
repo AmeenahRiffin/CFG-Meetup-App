@@ -15,5 +15,5 @@
 //as well as doing all sorts of creative activities. 
 
 // Yusra:
-// I like to draw in my downtime, I also love creating visual collages of my holidays and make a moodboard out of them.
+// I live in London and like to draw in my downtime, I also love creating visual collages of my holidays and make a moodboard out of them.
 // I miss working creatively and it's something that makes me relax.
