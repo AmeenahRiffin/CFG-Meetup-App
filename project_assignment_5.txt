@@ -1,0 +1,106 @@
+Please view this link to get access to the group google document:
+ https://docs.google.com/document/d/1hrTXOB0v9slgUbdqtIjOdMQHt-YSb4oxnZa6eN82SV8/edit?tab=t.0
+
+This Google document consists of 2 tabs. The group 6 meeting discussions tab and a task list tab.
+
+Group Project Assignment
+
+Part 1
+
+The members of this group are:
+- Ameenah Riffin
+- Carly Plumridge
+- Yusra Omar
+- Elizabeth (Libby) Meyers
+- Filsan Mohamed
+- Hollie Donnithorne (In order to join our project repository, Hollie has been asked to submit her GitHub credentials;
+but she has not yet done so, so she is not currently able to access the remote repository.
+Although a few of us have individually contacted her, unless she provides her details, 
+the instructor will not be able to see Hollie's Git commit history).
+
+
+Every member of the group put forward an idea and at the end we went with idea (E),
+ which is Hollie's idea.
+
+What is the concept/ what are you building?
+
+We're building The Neighbour Hub web app which puts users in a group with their neighbours.
+A group in which users can create events, see the upcoming events and where users can communicate 
+via posts on a general community message board by asking questions or discussing about 
+all sorts of things such as renting a room, pet sitting, sharing recommendations, selling furniture, 
+supporting local businesses, what is happening in the area, real-time local news, etc.
+Users can also connect on The Neighbour Hub with people who share similar interests
+or with people who are in the same age group. 
+Users can register by filling out a form where they can type in their names, postcode, email address,
+username and password.
+After users have filled in their information and have registered, they can log in and then 
+they will be placed in the correct neighbourhood on the platform.
+
+
+Who will this help? Who’s your target audience?
+
+The Neighbour Hub app promotes community involvement. 
+Its target audience includes people who would like to stay informed about
+what is happening in their neighbourhood and seek to connect with others.
+This app is for busy professionals who would like to engage with the community
+without attending gatherings and local businesses who seek to meet potential clients 
+in their area. 
+
+The app also helps community members looking for help, suggestions, or support, 
+as well as event planners who wish to plan and publicise local events. 
+It also gives young families who wish to connect with other families 
+and elderly people who are looking for social relationships a platform. 
+The Neighbour Hub app's overall goal is to improve neighbourhood relationships and foster
+a feeling of community among the neighbours.
+ 
+
+
+
+ How will you be working? What tools will help with that?
+ We will be working as a group and we will help each other where we can.
+ In terms of tools, we will be using HTML,CSS,Javascript, React,API and MySQL for database.
+ 
+
+
+How are you going to organise the workload? Who does what and
+When?
+
+API/Backend/MySQL database will be done by Ameenah, Elizabeth (Libby) and Carly.
+Frontend will be done by Ameenah, Filsan and Yusra.
+Ameenah has stated that she is willing to work on both sides, frontend and backend.
+Furthermore, Elizabeth (Libby) has stated that she is quite handy at the frontend
+and that she is willing to help with the frontend if she is needed. 
+
+What are the main features of your project?
+
+There would be automatic neighborhood placement after users have registered and logged in.
+On the community messageboard (home page) posts can be written, placed in a category and posted 
+by community members who are logged in.
+Posts can be viewed on the community message board (home page) by community members who are logged in. 
+Events details (such as event name, date, start time, end time, location, postcode, 
+price, description of the event and the category of the event)
+can be typed in and then the event can be created by community
+members who are logged in.  
+Upcoming events can be viewed by category by community members who are logged in. 
+
+
+
+
+Part 2 Design
+
+We have come up with 5 screens to produce the flow expected for users to follow. 
+We have explained the flow expected that the user will follow by using arrows.
+For example, the fact that when a user clicks on the register button, that the user then
+gets to the create an account page has been illustrated through an arrow connecting the register button
+on one page, to the create an account page.
+
+
+-Summary justification of our design choices.
+
+Because of its stylish design, the Neighbour Hub facilitates 
+community engagement. It uses soft lavender, 
+which is inviting, and purple, which exudes 
+creativity and confidence. It's easy to get started because 
+the login buttons and the registration buttons are conveniently located. 
+The layout walks you through the process of learning about the 'Your Neighbour Hub' app,
+the process of registering,and connecting with your neighbours. 
