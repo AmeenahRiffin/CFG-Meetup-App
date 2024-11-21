@@ -1,85 +1,81 @@
 # CFG-Meetup-App
-A meetup application for helping people find people in their local communities with similar hobbies. Group assignment project.
+A web application for managing and viewing meetup events, built with a Node.js backend and a React.js frontend. The project uses MySQL for the database, Express.js for the REST API, and Bootstrap for the UI styling. This is a group assignment, our contributors are:
+
+- Ameenah
+- Libby
+- Carly
+- Filsan
+- Hollie
+- Yusra
+
+
+# Prerequisites
+Ensure the following are installed on your system:
+
+Node.js (v16 or later)
+npm (Node Package Manager, included with Node.js)
+MySQL (v8 or later)
+Vite
+DotEnv
+Express
 
 # Installation:
+
 1. Clone the repository to your local machine. You can do this by running the following command in your terminal:
 git clone [GITHUB URL HERE]/CFG-Meetup-App.git
 
-2. Navigate to the project directory, IE:
-cd CFG-Meetup-App
+1. Ensure dependencies are installed first:
+``npm install``
+``npm install express``
+``npm install mysql2``
+``npm install cors``
+``npm install dotenv``
+``npm install nodemon``
 
-3. Ensure node.js and npm are installed first:
-npm install
-npm install express
+## The Quick Way:
+
+1. Click on install_requirements.cmd or type ".\install_requirements.cmd" in your terminal.
+2. This will install all the requirements needed for the project. 
 
 
-## Backend API Documentation:
-
-To run the backend server, navigate to the root directory of the project.
-
- 1. Run the server using npm start or node server.js
- 2. Open your browser and navigate to http://localhost:5000
- 3. You should see the message "Neighbourhood meetup app is now live!" there, to prove that it's working.
-
- ## Frontend API Documentation:
-
- Frontend is currently in progress.
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
+# Setting up the Database
+1.  Create your ENV file with your database info, place it in `backend/config.env`
+Sample data:
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+DB_HOST=localhost
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=neighbourhood_app_data
+````
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Set up your database using MySql Workbench or any other system you're using for your database. Import the contents of /backend/sql/schema.sql 
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Finally:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+3. Run the server.
 
-**Collaborators:**
-Ameenah
-Carly
-Filsan
-Hollie
-Libby
-Yusra
+# Running:
+
+## The Easy Way:
+
+1. Click on start.cmd or type ".\start.cmd" in your terminal.
+2. It should boot up the url in your browser to the live site with both the backend and frontend active. These will remain active as long as their cmd terminals are open.
+
+## The Normal Way:
+
+1. Open a terminal. "Terminal > New Terminal".
+
+2. Split the terminal by clicking the split icon in the terminal panel or pressing Ctrl + Shift + 5.
+
+3. Use one terminal for the backend:
+``cd backend``
+``npm run dev``
+This will remain active as long as that terminal is active.
+
+4. Use the other terminal for the frontend:
+``cd frontend``
+``npm run dev``
+This will remain active as long as that terminal is active.
+
+5. Finally, navigate to `http://localhost:5173/` to view the site.
+
