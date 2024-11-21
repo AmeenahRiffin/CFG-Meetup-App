@@ -35,9 +35,11 @@ git clone [GITHUB URL HERE]/CFG-Meetup-App.git
 ## The Quick Way:
 
 1. Click on install_requirements.cmd or type ".\install_requirements.cmd" in your terminal.
-2. This will install all the requirements needed for the project.
+2. This will install all the requirements needed for the project. 
 
-2. Create your ENV file with your database info, place it in `backend/config.env`
+
+# Setting up the Database
+1.  Create your ENV file with your database info, place it in `backend/config.env`
 Sample data:
 ```js
 DB_HOST=localhost
@@ -46,9 +48,11 @@ DB_PASSWORD=your_password
 DB_NAME=neighbourhood_app_data
 ````
 
-3. Set up your database using MySql Workbench or any other system you're using for your database. Import the contents of /backend/sql/schema.sql 
+2. Set up your database using MySql Workbench or any other system you're using for your database. Import the contents of /backend/sql/schema.sql 
 
-4. Run the server.
+Finally:
+
+3. Run the server.
 
 # Running:
 
