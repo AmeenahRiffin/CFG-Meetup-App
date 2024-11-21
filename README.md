@@ -30,7 +30,6 @@ git clone [GITHUB URL HERE]/CFG-Meetup-App.git
 ``npm install mysql2``
 ``npm install cors``
 ``npm install dotenv``
-``npm install vite --save-dev``
 ``npm install nodemon``
 
 ## The Quick Way:
