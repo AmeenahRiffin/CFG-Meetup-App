@@ -26,7 +26,7 @@ const EventDisplayView = ({
 
     useEffect(() => {
         // Fetch event details from the backend
-        fetch(`${apiLink}?page=${page}&entriesPerPage=${entriesPerPage}`)
+        fetch(`${apiLink}?page=${page}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Events not found");

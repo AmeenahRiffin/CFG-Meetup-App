@@ -177,7 +177,8 @@ app.get('/events/nearest/:user_id', async (req, res) => {
             eventResults
         );
     } catch (error) {
-        console.error('Error in /events/nearest/:user_id:', error);
+        console.error('Unable to find events near this postcode.', error);
         res.status(500).json({ error: error.message });
     }
 });
+

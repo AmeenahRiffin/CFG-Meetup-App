@@ -17,7 +17,7 @@ const UserDisplayView = ({ apiLink = "http://localhost:5000/users", entriesPerPa
 
     useEffect(() => {
         // Fetch user details from the backend using the user id
-        fetch(`${apiLink}?page=${page}&entriesPerPage=${entriesPerPage}`)
+        fetch(`${apiLink}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Users not found");
