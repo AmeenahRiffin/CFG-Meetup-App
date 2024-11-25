@@ -1,34 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route } from 'react-router-dom';
+import { Home, Explore, Saved, CreatePost, EditPost, Profile, Marketplace, AuthLayout, ProtectedLayout, PostDetails } from './pages';
 import './App.css'
+import SigninForm from './pages/forms/SigninForm';
+import SignupForm from './pages/forms/SignupForm';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+
+      <Routes>
+
+        {/* Public Routes */}
+        <Route path='/' element={<AuthLayout />} >
+        <Route path="/sign-in" element={<SigninForm />} />
+        <Route path="/sign-up" element={<SignupForm />} />
+        </Route>
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/saved" element={<Saved />} />
+        <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/editpost/:id" element={<EditPost />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/post/:id" element={<PostDetails />} />
+
+        </Route>
+
+
+      </Routes>
+      
+      
+      
+      
+      
+      
+      
+    </main>
   )
 }
 
