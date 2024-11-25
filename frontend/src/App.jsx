@@ -3,6 +3,7 @@ import { Home, Explore, Saved, CreatePost, EditPost, Profile, Marketplace, AuthL
 import './App.css'
 import SigninForm from './pages/forms/SigninForm';
 import SignupForm from './pages/forms/SignupForm';
+import AuthenLayout from './pages/forms/AuthenLayout';
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Routes>
 
         {/* Public Routes */}
-        <Route path='/' element={<AuthLayout />} >
+        <Route path='/' element={<AuthenLayout />} >
         <Route path="/sign-in" element={<SigninForm />} />
         <Route path="/sign-up" element={<SignupForm />} />
         </Route>
