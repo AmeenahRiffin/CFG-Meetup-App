@@ -1,7 +1,7 @@
 
 
 export const sidebarLinks = [
-    
+
     {
        label: 'Create Post',
         path: '/createpost',
@@ -42,5 +42,9 @@ export const sidebarLinks = [
         path: '/post/:id',
         imgURL: '',
     },
-   
+   {
+        label: 'Events',
+        path: '/events',
+        imgURL: '',
+    },
 ]

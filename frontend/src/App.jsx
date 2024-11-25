@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Home, Explore, Saved, CreatePost, EditPost, Profile, Marketplace, AuthLayout, ProtectedLayout, PostDetails } from './pages';
+import { Home, Explore, Saved, CreatePost, EditPost, Profile, Marketplace, AuthenLayout, ProtectedLayout, PostDetails, Events } from './pages';
 import './App.css'
 import SigninForm from './pages/forms/SigninForm';
 import SignupForm from './pages/forms/SignupForm';
@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/post/:id" element={<PostDetails />} />
+        <Route path="/events" element={<Events />} />
 
         </Route>
 
