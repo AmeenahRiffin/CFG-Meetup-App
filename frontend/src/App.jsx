@@ -4,6 +4,9 @@ import UserDisplay from '../components/UserDisplay'
 import EventDisplay from '../components/EventDisplay'
 import UserDisplayView from '../components/UserDisplayView'
 import EventDisplayView from '../components/EventDisplayView'
+import UserDisplayViewSingle from '../components/UserDisplayViewSingle'
+import PostDisplay from '../components/PostDisplay'
+import PostDisplayView from '../components/PostDisplayView'
 
 function App() {
   return (
@@ -60,7 +63,14 @@ function App() {
         They live in M1 1AE - but there are many events that are close to them. </p>
 
       <EventDisplayView apiLink={`http://localhost:5000/events/nearest/5`} entriesPerPage={5}/>
-      
+
+      <PostDisplay user_id={3} post_category={"Misc"} post_content="This is a test post." post_date="2023-10-01" />
+
+      <UserDisplayViewSingle userId={4}/>
+
+      <h3>Display Multiple Posts</h3>
+
+      <PostDisplayView api={`http://localhost:5000/posts`} entriesPerPage={3} />
       
     </>
   )

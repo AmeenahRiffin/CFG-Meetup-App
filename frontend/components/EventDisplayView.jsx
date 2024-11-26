@@ -25,8 +25,7 @@ const EventDisplayView = ({
     const [page, setPage] = useState(1); 
 
     useEffect(() => {
-        // Fetch event details from the backend
-        fetch(`${apiLink}?page=${page}`)
+        fetch(`${apiLink}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Events not found");
@@ -42,6 +41,7 @@ const EventDisplayView = ({
                 setError("Failed to load events.");
                 setLoading(false);
             });
+
     }, [apiLink, page, entriesPerPage]);
 
     if (loading) return <p>Loading events...</p>;
