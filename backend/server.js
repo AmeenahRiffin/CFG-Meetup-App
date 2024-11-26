@@ -182,3 +182,70 @@ app.get('/events/nearest/:user_id', async (req, res) => {
     }
 });
 
+// Gets all the posts
+app.get('/posts', async (req, res) => {
+    try {
+        const allPostsQuery = 'SELECT * FROM general_posts';
+        const [allPostsResults] = await pool.promise().query(allPostsQuery);
+
+        res.json(allPostsResults);
+    } catch (error) {
+        console.error('Unable to retrieve all posts.', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// posts by id
+app.get('/posts/:post_id', async (req, res) => {
+    try {
+        const postId = req.params.post_id;
+        const postQuery = 'SELECT * FROM general_posts WHERE post_id = ?';
+        const [postResults] = await pool.promise().query(postQuery, [postId]);
+
+        if (postResults.length === 0) {
+            return res.status(404).json({ message: 'No post found with this ID.' });
+        }
+
+        res.json(postResults[0]);
+    } catch (error) {
+        console.error('No posts found with this id', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// this gets posts by category
+app.get('/posts/category/:category', async (req, res) => {
+    try {
+        const category = req.params.category;
+        const categoryQuery = 'SELECT * FROM general_posts WHERE post_category = ?';
+        const [categoryResults] = await pool.promise().query(categoryQuery, [category]);
+
+        res.json(categoryResults);
+    } catch (error) {
+        console.error('No posts for this category', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// this will get all of a user's posts, you specify the user's id
+app.get('/posts/user/:user_id', async (req, res) => {
+    try {
+        const userId = req.params.user_id;
+        const userPostsQuery = 'SELECT * FROM general_posts WHERE user_id = ?';
+        const [userPostsResults] = await pool.promise().query(userPostsQuery, [userId]);
+
+        res.json(userPostsResults);
+    } catch (error) {
+        console.error('No posts for this user found in the db', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// TODO: We need to add the ability to register a user, through POST commands.
+
+// POST: Register a new user
+
+// POST: Add a new event
+
+// POST: Add a new post
+
