@@ -31,6 +31,9 @@ git clone [GITHUB URL HERE]/CFG-Meetup-App.git
 ``npm install cors``
 ``npm install dotenv``
 ``npm install nodemon``
+``npm install react-router``
+``npm install react-router-dom``
+``npm install zod``
 
 ## The Quick Way:
 

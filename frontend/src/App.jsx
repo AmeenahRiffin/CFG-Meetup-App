@@ -1,4 +1,3 @@
-
 import './App.css'
 import UserDisplay from '../components/UserDisplay'
 import EventDisplay from '../components/EventDisplay'
@@ -77,4 +76,3 @@ function App() {
 }
 
 export default App
-
