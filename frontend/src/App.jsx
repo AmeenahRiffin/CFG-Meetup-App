@@ -6,6 +6,11 @@ import EventDisplayView from '../components/EventDisplayView'
 import UserDisplayViewSingle from '../components/UserDisplayViewSingle'
 import PostDisplay from '../components/PostDisplay'
 import PostDisplayView from '../components/PostDisplayView'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import About from './components/About';
+import Landing from './components/Landing';
 
 function App() {
   return (
@@ -71,6 +76,30 @@ function App() {
 
       <PostDisplayView api={`http://localhost:5000/posts`} entriesPerPage={3} />
       
+      <Router>
+      <div>
+        {/* Optionally add a navbar or links here */}
+        <header>
+          <h1>Neighbourhood App</h1>
+          <nav>
+            <button onClick={() => window.location.href = '/about'}>About</button>
+            <button onClick={() => window.location.href = '/login'}>Login</button>
+            <button onClick={() => window.location.href = '/register'}>Register</button>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            {/* Landing page */}
+            <Route path="/" element={<Landing />} />
+
+            {/* Registration, Login, and About pages */}
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
     </>
   )
 }
