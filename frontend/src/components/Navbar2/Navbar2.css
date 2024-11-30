@@ -10,7 +10,6 @@ a {
 }
 
 body {
-  background: url("../../assets/images/landing-bg.png") no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
