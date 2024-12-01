@@ -58,12 +58,29 @@
 
 import React from "react";
 import Navbar5 from "./components/Navbar5/Navbar5"; // Adjust the path if necessary
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from "./components/Webpages/HomePage";
+import AboutPage from "./components/Webpages/AboutPage";
+import RegisterPage from "./components/Webpages/RegisterPage";
+import LoginPage from "./components/Webpages/LoginPage";
+import './components/Styles/homepage.css'
+import './components/Styles/aboutpage.css'
+import './components/Styles/registerpage.css'
+import './components/Styles/loginpage.css'
 
 const App = () => {
   return (
     <div>
       {/* Render only the Navbar5 */}
       <Navbar5 />
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 };
