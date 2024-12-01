@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto, Arial, sans-serif";
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  font-size: 32px;
+  color: #8e56b1;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.logo:hover {
+  color: #e39ff6;
+}
+
+/* Navbar4 */
+.navbar4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar4-item {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navbar4-item:hover {
+  color: #e39ff6;
+}
+
+.navbar4 a {
+  position: relative;
+  font-size: 18px;
+  font-weight: 550;
+  color: #8e56b1;
+  margin-left: 40px;
+}
+
+/* Underline Hover Effect */
+.navbar4 a::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #8e56b1;
+  transition: 0.3s;
+}
+
+.navbar4 a:hover::before {
+  width: 100%;
+}
