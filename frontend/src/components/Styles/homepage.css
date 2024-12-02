@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('../images/landing-bg.png') no-repeat center center/cover;
+    /* background: url('../images/landing-bg.png') no-repeat center center/cover; assets images not showing up*/
     height: 100vh;
     color: #333;
     overflow: hidden; /* Prevent scrolling */
