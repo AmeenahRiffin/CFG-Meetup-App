@@ -34,6 +34,7 @@ git clone [GITHUB URL HERE]/CFG-Meetup-App.git
 ``npm install react-router``
 ``npm install react-router-dom``
 ``npm install zod``
+``npm install bcrypt``
 
 ## The Quick Way:
 

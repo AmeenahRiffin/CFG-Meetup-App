@@ -1,11 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-
 const app = express();
 const PORT = 5173;
 const dotenv = require('dotenv');
-
+require('dotenv').config();
+const bcrypt = require('bcrypt');
 app.use(cors());
 app.use(express.json());
 
@@ -41,6 +41,40 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+
+//Login/Authenticate users with bcrypt
+//identify the user email and password, search for email in db, compare password with bycrypt, return result
+
+    app.post("/login", (req, res)=> {
+        const user = req.body.email
+        const password = req.body.password
+        db.getConnection ( async (err, connection)=> {
+        if (err) throw (err)
+        const sqlSearch = "Select * from user_email where user_email = ?"
+        const search_query = mysql.format(sqlSearch,[user])
+        await connection.query (search_query, async (err, result) => {
+        connection.release()
+        
+        if (err) throw (err)
+        if (result.length == 0) {
+        console.log("--------> User does not exist")
+        res.sendStatus(404)
+        } 
+        else {
+            const hashedPassword = result[0].user_password
+            //get the hashedPassword from result
+            if (await bcrypt.compare(password, hashedPassword)) {
+            console.log("---------> Login Successful")
+            res.send(`${user} is logged in!`)
+            } 
+            else {
+            console.log("---------> Password Incorrect")
+            res.send("Password incorrect!")
+                }
+        }
+        })
+        })
+        })
 
 // Endpoints for the API
 

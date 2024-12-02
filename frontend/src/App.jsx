@@ -12,15 +12,11 @@ import './components/Styles/homepage.css'
 import './components/Styles/aboutpage.css'
 import './components/Styles/registerpage.css'
 import './components/Styles/loginpage.css'
-import './assets/images'
-
 
 const App = () => {
   return (
     <div>
-      <Navbar2 />
-      <Navbar3 />
-      <Navbar4 />
+      {/* Render only the Navbar5 */}
       <Navbar5 />
       <Router>
         <Routes>
