@@ -1,9 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar2 from "./components/Navbar2/Navbar2";
-import Navbar3 from "./components/Navbar3/Navbar3";
-import Navbar4 from "./components/Navbar4/Navbar4";
-import Navbar5 from "./components/Navbar5/Navbar5";
 import HomePage from "./components/Webpages/HomePage";
 import AboutPage from "./components/Webpages/AboutPage";
 import RegisterPage from "./components/Webpages/RegisterPage";
@@ -16,8 +12,6 @@ import './components/Styles/loginpage.css'
 const App = () => {
   return (
     <div>
-      {/* Render only the Navbar5 */}
-      <Navbar5 />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
