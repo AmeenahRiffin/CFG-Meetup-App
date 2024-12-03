@@ -83,3 +83,10 @@ This will remain active as long as that terminal is active.
 
 5. Finally, navigate to `http://localhost:5173/` to view the site.
 
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
