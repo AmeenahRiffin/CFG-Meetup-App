@@ -1,0 +1,23 @@
+.create-post-btn {
+  background-color: #6b107f; /* Button background color */
+  color: white; /* Text color */
+  border: none; /* Remove default border */
+  padding: 9px 15px; /* Add some padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 16px; /* Font size */
+  width: 140px;
+}
+
+.controls {
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+.dropdown-filter {
+  margin-right: 10px; /* Space between dropdown and button */
+}
+
+.create-post-btn:hover {
+  opacity: 0.9; /* Slightly change opacity on hover for effect */
+}

@@ -1,0 +1,39 @@
+body {
+  /* margin: 0;
+    padding: 0; */
+  font-family: sans-serif;
+  background-color: #fbe6fe; /* Change to your desired color */
+}
+
+.message-board-title {
+  margin-top: 90px;
+  margin-left: 47px;
+  color: #6b107f;
+  cursor: pointer;
+}
+
+.message-board-title:hover {
+  color: #8e56b1;
+}
+
+.dropdown-filter {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.message-board-title {
+  margin-bottom: 0px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+dropdown-filter {
+  margin-left: auto;
+}

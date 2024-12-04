@@ -1,0 +1,32 @@
+.messageCard {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 10px; /* Rounded corners */
+  width: 75%; /* Full width of the container */
+  padding: 15px; /* Padding inside the card */
+  margin-bottom: 20px; /* Add space between cards */
+  margin: 0 auto;
+}
+
+.messageDetails {
+  margin-top: 10px; /* Space above details */
+}
+
+.postCategory,
+.postTitle,
+.postDate {
+  margin: 5px 0; /* Vertical spacing between text elements */
+}
+
+.app {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack cards vertically */
+  align-items: center; /* Center cards horizontally */
+  min-height: 100vh;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.messageCard {
+  margin-bottom: 30px; /* Space between individual messages */
+}
