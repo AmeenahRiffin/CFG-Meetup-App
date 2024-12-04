@@ -26,13 +26,45 @@
 
 // export default App;
 
-import React from "react";
-import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents"; // Corrected path to UpcomingEvents component
+// import React from "react";
+// import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents"; // Corrected path to UpcomingEvents component
 
+// function App() {
+//   return (
+//     <div className="App">
+//       <UpcomingEvents /> {/* Render the UpcomingEvents component */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import EventForm from "./components/EventForm.jsx/EventForm";
+
+// <EventForm />
+
+// export default App;
+
+// import React from "react";
+// import Form from "./components/EventForm.jsx/EventForm";
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Form />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import React from "react";
+import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
 function App() {
   return (
     <div className="App">
-      <UpcomingEvents /> {/* Render the UpcomingEvents component */}
+      <CreateEvent />
     </div>
   );
 }
