@@ -7,22 +7,22 @@ const Navbar = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar">
-        <a href="landing.html" className="navbar-item">
+        <a href="homepage.html" className="navbar-item">
           Home
         </a>
         <a href="about.html" className="navbar-item">
           About
         </a>
-        <a href="message_board.html" className="navbar-item">
+        <a href="messageboard.html" className="navbar-item">
           Message Board
         </a>
-        <a href="create_event.html" className="navbar-item">
+        <a href="create-event.html" className="navbar-item">
           Create an Event
         </a>
-        <a href="upcoming_events.html" className="navbar-item active">
+        <a href="upcoming-events.html" className="navbar-item active">
           Upcoming Events
         </a>
-        <a href="landing.html" className="navbar-item">
+        <a href="homepage.html" className="navbar-item">
           Log Out
         </a>
       </nav>

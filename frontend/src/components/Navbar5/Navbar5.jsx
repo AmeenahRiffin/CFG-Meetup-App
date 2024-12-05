@@ -7,10 +7,10 @@ const Navbar5 = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar">
-        <a href="upcoming_events.html" className="navbar-item active">
+        <a href="homepage.html" className="navbar-item active">
           Home
         </a>
-        <a href="homepage.html" className="navbar-item">
+        <a href="register.html" className="navbar-item">
           Register
         </a>
       </nav>

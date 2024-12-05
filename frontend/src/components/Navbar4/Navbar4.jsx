@@ -9,10 +9,10 @@ const Navbar4 = () => {
       <nav className="navbar4">
         {" "}
         {/* Updated class name */}
-        <a href="upcoming_events.html" className="navbar4-item active">
+        <a href="homepage.html" className="navbar4-item active">
           Home
         </a>
-        <a href="landing.html" className="navbar4-item">
+        <a href="login.html" className="navbar4-item">
           Login
         </a>
       </nav>

@@ -59,14 +59,53 @@
 
 // export default App;
 
+// import React from "react";
+// import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
+// function App() {
+//   return (
+//     <div className="App">
+//       <CreateEvent />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents"; // Corrected path to UpcomingEvents component
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <UpcomingEvents /> {/* Render the UpcomingEvents component */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import AboutPage from "./components/Webpages/AboutPage";
+
+// const App = () => {
+//   return (
+//     <div>
+//       <AboutPage />
+//     </div>
+//   );
+// };
+
+// export default App;
+
 import React from "react";
-import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
-function App() {
+import Login from "./pages/webpages/Login/Login";
+
+const App = () => {
   return (
-    <div className="App">
-      <CreateEvent />
+    <div>
+      <Login />
     </div>
   );
-}
+};
 
 export default App;

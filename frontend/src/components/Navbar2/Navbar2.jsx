@@ -7,13 +7,10 @@ const Navbar2 = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar2">
-        <a href="landing.html" className="navbar2-item">
-          Home
-        </a>
         <a href="about.html" className="navbar2-item">
           About
         </a>
-        <a href="message_board.html" className="navbar2-item">
+        <a href="login.html" className="navbar2-item">
           Login
         </a>
       </nav>
