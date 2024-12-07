@@ -1,9 +1,5 @@
 // import React from "react";
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Navbar2 from "./components/Navbar2/Navbar2";
-// import Navbar3 from "./components/Navbar3/Navbar3";
-// import Navbar4 from "./components/Navbar4/Navbar4";
-// import Navbar5 from "./components/Navbar5/Navbar5";
 // import HomePage from "./components/Webpages/HomePage";
 // import AboutPage from "./components/Webpages/AboutPage";
 // import RegisterPage from "./components/Webpages/RegisterPage";
@@ -16,11 +12,6 @@
 // const App = () => {
 //   return (
 //     <div>
-//       <Navbar2 />
-//       <Navbar3 />
-//       <Navbar4 />
-//       <Navbar5 />
-//       <Navbar5 />
 //       <Router>
 //         <Routes>
 //           <Route path="/" element={<HomePage />} />
@@ -29,6 +20,90 @@
 //           <Route path="/login" element={<LoginPage />} />
 //         </Routes>
 //       </Router>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// import React from "react";
+// import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents"; // Corrected path to UpcomingEvents component
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <UpcomingEvents /> {/* Render the UpcomingEvents component */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import EventForm from "./components/EventForm.jsx/EventForm";
+
+// <EventForm />
+
+// export default App;
+
+// import React from "react";
+// import Form from "./components/EventForm.jsx/EventForm";
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Form />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
+// function App() {
+//   return (
+//     <div className="App">
+//       <CreateEvent />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents"; // Corrected path to UpcomingEvents component
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <UpcomingEvents /> {/* Render the UpcomingEvents component */}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// import React from "react";
+// import AboutPage from "./components/Webpages/AboutPage";
+
+// const App = () => {
+//   return (
+//     <div>
+//       <AboutPage />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// import React from "react";
+// import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
+
+// const App = () => {
+//   return (
+//     <div>
+//       <CreateEvent />
 //     </div>
 //   );
 // };

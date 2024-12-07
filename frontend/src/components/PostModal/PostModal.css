@@ -1,0 +1,47 @@
+.modal {
+  position: fixed; /* Position the modal */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex; /* Center the modal */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fbe6fe; /* Purple background for modal content */
+  color: white; /* Text color */
+  padding: 20px; /* Padding inside the modal */
+  border-radius: 5px; /* Rounded corners */
+  width: 400px; /* Set a width for the modal */
+}
+
+.modal-header {
+  display: flex; /* Flexbox for header layout */
+  justify-content: space-between; /* Space between title and close button */
+  color: #6b107f;
+}
+
+.close-btn {
+  background-color: transparent; /* Transparent background for close button */
+  color: #6b107f; /* Close button text color */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+textarea {
+  width: 100%; /* Full width for text areas */
+  padding-top: 15px; /* Padding inside text area for better appearance */
+  padding-bottom: 50px;
+}
+
+.submit-post-btn {
+  background-color: #6b107f; /* Purple background for submit button */
+  color: white; /* Text color for submit button */
+  border: none; /* No border */
+  padding: 10px; /* Padding for submit button */
+  border-radius: 5px; /* Rounded corners for submit button */
+  cursor: pointer; /* Pointer cursor on hover */
+}

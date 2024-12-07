@@ -28,11 +28,12 @@ body {
   z-index: 100;
 }
 .logo {
-  font-size: 32px;
+  font-size: 20px;
   color: #8e56b1;
   font-weight: 700;
   cursor: pointer; /* Pointer cursor on hover */
   margin-right: auto;
+  width: 200px;
 }
 
 .logo:hover {

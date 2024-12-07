@@ -1,0 +1,57 @@
+/* EventForm.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+h1 {
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  width: 750px; /* Set a fixed width for the form */
+}
+
+.event-form input,
+.event-form textarea,
+.event-form select {
+  margin-bottom: 15px; /* Space between inputs */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.placeholder {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+}
+
+.submit-btn {
+  background-color: #8e56b1;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 9px;
+}
+
+.submit-btn:hover {
+  background-color: #e39ff6; /* Darker green */
+}
