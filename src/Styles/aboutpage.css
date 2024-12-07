@@ -1,8 +1,0 @@
-body {
-   /* background-image: url('assets/images/about-bg.png'); Replace with your actual image path */
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-attachment: fixed; /* Keeps the background in place while scrolling */
-   margin: 0;
-   height: 100vh; /* Ensures it takes the full viewport height */
-}

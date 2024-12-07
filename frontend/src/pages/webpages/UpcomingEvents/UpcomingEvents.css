@@ -1,0 +1,109 @@
+body {
+  background-color: #fbe6fe; /* Replace with your desired color */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.container {
+  background-color: #fbe6fe; /* Ensure this matches the body color if used */
+  min-height: 100vh; /* Ensure it takes full height */
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.logo {
+  width: 280px;
+  height: auto; /* Adjust for responsive logo */
+}
+
+/* Main content styling */
+.content {
+  width: 80%;
+  padding: 40px;
+}
+
+/* Heading styling */
+.content h1 {
+  font-size: 26px;
+  color: #6b107f;
+}
+
+/* Event header styling */
+.event-header {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-bottom: 20px; /* Space below header */
+  padding-right: 50px;
+  margin-top: 50px;
+}
+
+/* Centering styles for title */
+.event-header h1 {
+  text-align: center; /* Center text */
+  cursor: pointer;
+}
+
+.event-header h1:hover {
+  color: #8e56b1;
+}
+
+.event-cards-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; /* Allow wrapping of cards */
+  margin-top: 20px; /* Space above the card section */
+}
+
+.event-cards {
+  display: flex; /* Keep this if you want to manage card layout */
+  gap: 20px; /* Space between individual cards */
+}
+
+/* Filter dropdown styling */
+.filter {
+  margin-top: 10px; /* Space above filter */
+  margin-bottom: 20px;
+}
+
+.filter select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Event cards styling */
+.eventCards {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of cards */
+  gap: 20px; /* Space between cards */
+}
+
+.eventCard {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: calc(50% - 10px); /* Adjust width for responsiveness */
+}
+
+.eventDetails {
+  padding: 15px; /* Padding inside each event card */
+}
+
+.dateTime {
+  font-size: 14px; /* Smaller font for date/time */
+}
+
+.locationPriceNumber h2 {
+  font-size: 18px; /* Title size */
+}
+
+.locationPriceNumber p {
+  margin-top: 5px; /* Space between paragraphs */
+}

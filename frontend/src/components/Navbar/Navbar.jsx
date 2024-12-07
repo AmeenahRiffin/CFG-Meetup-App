@@ -1,4 +1,39 @@
+// import React from "react";
+// import "./Navbar.css";
+
+// const Navbar = () => {
+//   return (
+//     <header className="header">
+//       <span className="logo">The Neighbour Hub</span>
+
+//       <nav className="navbar">
+//         <a href="homepage.html" className="navbar-item">
+//           Home
+//         </a>
+//         <a href="about.html" className="navbar-item">
+//           About
+//         </a>
+//         <a href="messageboard.html" className="navbar-item">
+//           Message Board
+//         </a>
+//         <a href="create-event.html" className="navbar-item">
+//           Create an Event
+//         </a>
+//         <a href="upcoming-events.html" className="navbar-item active">
+//           Upcoming Events
+//         </a>
+//         <a href="homepage.html" className="navbar-item">
+//           Log Out
+//         </a>
+//       </nav>
+//     </header>
+//   );
+// };
+
+// export default Navbar;
+
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -7,24 +42,25 @@ const Navbar = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar">
-        <a href="landing.html" className="navbar-item">
+        {/* Replace <a> tags with <Link> */}
+        <Link to="/" className="navbar-item">
           Home
-        </a>
-        <a href="about.html" className="navbar-item">
+        </Link>
+        <Link to="/about" className="navbar-item">
           About
-        </a>
-        <a href="message_board.html" className="navbar-item">
+        </Link>
+        <Link to="/message-board" className="navbar-item">
           Message Board
-        </a>
-        <a href="create_event.html" className="navbar-item">
+        </Link>
+        <Link to="/create-event" className="navbar-item">
           Create an Event
-        </a>
-        <a href="upcoming_events.html" className="navbar-item active">
+        </Link>
+        <Link to="/upcoming-events" className="navbar-item active">
           Upcoming Events
-        </a>
-        <a href="landing.html" className="navbar-item">
+        </Link>
+        <Link to="/" className="navbar-item">
           Log Out
-        </a>
+        </Link>
       </nav>
     </header>
   );

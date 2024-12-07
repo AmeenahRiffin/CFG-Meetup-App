@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #fdf0ff;
+}
+
+.register-btn {
+  width: 200px;
+  height: 50px;
+  padding: 10px 20px;
+  background-color: #8e56b1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Main Styling */
+
+main {
+  background-color: #f9f9f9;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Change this from center to flex-start */
+  width: 80%;
+  padding-top: 50px; /* Add some top padding */
+}
+
+/* Form Container Styling */
+
+.form-container {
+  width: 100%;
+  max-width: 700px;
+  height: 60%;
+  padding: 20px;
+  background-color: #efd4ff;
+  border-radius: 20px;
+  text-align: center;
+  display: flex; /* Add this */
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 200px; /* Add this to push the container down */
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 30px;
+}
+
+.form-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-container button {
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #8e56b1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 25px;
+}
+
+.form-container button:hover {
+  background-color: #764095;
+}
