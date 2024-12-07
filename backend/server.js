@@ -75,10 +75,12 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/HomePage', (req, res) => {
+app.get('/home', (req, res) => {
+    //if logged in
     if (req.session.loggedin) {
-        res.send(path.join(__dirname, '.src/webpages/HomePage.jsx'));
+        res.send(path.join('Welcome ' + req.session.username));
     } else {
+    //if not logged in    
         res.send('Please login to view this page!');
     }
     res.end();
