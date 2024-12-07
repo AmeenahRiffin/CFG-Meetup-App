@@ -7,6 +7,8 @@ const PORT = 5173;
 const dotenv = require('dotenv');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
+const path = require('path');
+const e = require('express');
 app.use(cors());
 app.use(express.json());
 
@@ -31,52 +33,62 @@ pool.getConnection((err, connection) => {
         console.error(`Error connecting to the database: ${err}`);
         return;
     }
-
     console.log('Successfully connected to the database');
     connection.release();
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
+}));
 
-//Login/Authenticate users with bcrypt
-//identify the user email and password, search for email in db, compare password with bycrypt, return result
+app.get('/', (req, res) => {
+    res.send(path.join(__dirname, '.src/webpages/LoginPage.jsx'));
+});
 
-    app.post("/login", (req, res)=> {
-        const user = req.body.email
-        const password = req.body.password
-        db.getConnection ( async (err, connection)=> {
-        if (err) throw (err)
-        const sqlSearch = "Select * from user_email where user_email = ?"
-        const search_query = mysql.format(sqlSearch,[user])
-        await connection.query (search_query, async (err, result) => {
-        connection.release()
-        
-        if (err) throw (err)
-        if (result.length == 0) {
-        console.log("--------> User does not exist")
-        res.sendStatus(404)
-        } 
-        else {
-            const hashedPassword = result[0].user_password
-            //get the hashedPassword from result
-            if (await bcrypt.compare(password, hashedPassword)) {
-            console.log("---------> Login Successful")
-            res.send(`${user} is logged in!`)
-            } 
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    const user = await db.getUserByUsername(username);
+    if (username && password) {
+
+        connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+            if (error) throw error;
+            if (results.length > 0) {
+                req.session.loggedin = true;
+                req.session.username = username;
+                res.redirect('/HomePage');
+            }
             else {
-            console.log("---------> Password Incorrect")
-            res.send("Password incorrect!")
-                }
-        }
-        })
-        })
-        })
+                res.send('Incorrect Username and/or Password!');
+            }   
+            res.end();
+        });
+    } else {
+        res.send('Please enter Username and Password!');
+        res.end();
+    }
+});
 
+app.get('/HomePage', (req, res) => {
+    if (req.session.loggedin) {
+        res.send(path.join(__dirname, '.src/webpages/HomePage.jsx'));
+    } else {
+        res.send('Please login to view this page!');
+    }
+    res.end();
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
+});
+   
 // Endpoints for the API
 
 // This allows you to retrieve all events.
