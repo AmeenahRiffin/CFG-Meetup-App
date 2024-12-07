@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const mysql = require('mysql2');
 // const db = require('././database');
 const cors = require('cors');
@@ -7,10 +8,15 @@ const PORT = 5173;
 const dotenv = require('dotenv');
 require('dotenv').config();
 const path = require('path');
-const express = require('express');
 app.use(cors());
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'HomePage')));
 
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
@@ -37,27 +43,25 @@ pool.getConnection((err, connection) => {
     connection.release();
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-
 
 //login API
 app.get('/', (req, res) => {
-    res.send(path.join(__dirname, '.src/webpages/LoginPage.jsx'));
+    res.sendFile(path.join(__dirname, '.src/webpages/LoginPage.jsx'));
 });
 
 app.post('/login', async (req, res) => {
+    //get username and password
     const { username, password } = req.body;
-    const user = await db.getUserByUsername(username);
     if (username && password) {
-
+    //sql query to throw error if user or password doesn't exist
         connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
             if (error) throw error;
+
+    //to find existing accounts        
             if (results.length > 0) {
                 req.session.loggedin = true;
                 req.session.username = username;
+    //direct user to home page            
                 res.redirect('/HomePage');
             }
             else {
@@ -79,6 +83,8 @@ app.get('/HomePage', (req, res) => {
     }
     res.end();
 });
+
+//API logout to end session
 
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
@@ -284,6 +290,11 @@ app.get('/posts/user/:user_id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 
 // TODO: We need to add the ability to register a user, through POST commands.
 
