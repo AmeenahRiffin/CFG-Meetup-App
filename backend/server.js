@@ -75,7 +75,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/home', (req, res) => {
+app.get('/HomePage', (req, res) => {
     //if logged in
     if (req.session.loggedin) {
         res.send(path.join('Welcome ' + req.session.username));
