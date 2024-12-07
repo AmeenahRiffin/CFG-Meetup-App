@@ -16,7 +16,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'home')));
+app.use(express.static(path.join(__dirname, 'HomePage')));
 
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
@@ -43,11 +43,6 @@ pool.getConnection((err, connection) => {
     connection.release();
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-
 
 //login API
 app.get('/', (req, res) => {
@@ -55,15 +50,18 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
+    //get username and password
     const { username, password } = req.body;
-    const user = await db.getUserByUsername(username);
     if (username && password) {
-
+    //sql query to throw error if user or password doesn't exist
         connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
             if (error) throw error;
+
+    //to find existing accounts        
             if (results.length > 0) {
                 req.session.loggedin = true;
                 req.session.username = username;
+    //direct user to home page            
                 res.redirect('/HomePage');
             }
             else {
@@ -292,6 +290,11 @@ app.get('/posts/user/:user_id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
 
 // TODO: We need to add the ability to register a user, through POST commands.
 
