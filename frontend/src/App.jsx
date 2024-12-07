@@ -98,12 +98,12 @@
 // export default App;
 
 import React from "react";
-import Login from "./pages/webpages/Login/Login";
+import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
 
 const App = () => {
   return (
     <div>
-      <Login />
+      <CreateEvent />
     </div>
   );
 };
