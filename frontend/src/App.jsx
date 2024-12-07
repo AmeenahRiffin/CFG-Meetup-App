@@ -97,15 +97,53 @@
 
 // export default App;
 
-import React from "react";
-import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
+// import React from "react";
+// import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
 
-const App = () => {
+// const App = () => {
+//   return (
+//     <div>
+//       <CreateEvent />
+//     </div>
+//   );
+// };
+
+// export default App;
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Added Link
+
+// Importing components from the webpages directory
+import About from "./pages/webpages/About/About";
+import CreateEvent from "./pages/webpages/CreateEvent/CreateEvent";
+import HomePage from "./pages/webpages/HomePage/HomePage";
+import Login from "./pages/webpages/Login/Login";
+import MessageBoard from "./pages/webpages/MessageBoard/MessageBoard";
+import Register from "./pages/webpages/Register/Register";
+import UpcomingEvents from "./pages/webpages/UpcomingEvents/UpcomingEvents";
+
+// Importing styles
+import "./App.css";
+
+function App() {
   return (
-    <div>
-      <CreateEvent />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {/* Define your routes */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/message-board" element={<MessageBoard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/upcoming-events" element={<UpcomingEvents />} />
+          {/* Fallback route for undefined paths */}
+          <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+        </Routes>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;

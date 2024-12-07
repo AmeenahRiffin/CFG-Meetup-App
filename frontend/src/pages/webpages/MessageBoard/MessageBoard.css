@@ -1,39 +1,97 @@
-body {
-  /* margin: 0;
-    padding: 0; */
-  font-family: sans-serif;
-  background-color: #fbe6fe; /* Change to your desired color */
+.message-board-wrapper {
+  position: relative;
+  background-color: #fdf0ff;
+  z-index: 1;
+  min-height: 100vh;
 }
 
-.message-board-title {
-  margin-top: 90px;
-  margin-left: 47px;
-  color: #6b107f;
-  cursor: pointer;
+/* Header section */
+.message-board-header {
+  position: relative;
+  z-index: 10;
+  background-color: inherit;
+  padding: 70px;
+  text-align: center;
+  background-color: #fdf0ff;
 }
 
-.message-board-title:hover {
-  color: #8e56b1;
-}
-
-.dropdown-filter {
-  display: block;
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.message-board-title {
-  margin-bottom: 0px;
-}
-
-header {
+/* Container for header elements */
+.header-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 75%; /* Consistent width for header content */
+  margin: 0 auto; /* Center the content */
+  gap: 10px; /* Add spacing between items */
+  background-color: #fdf0ff;
 }
 
-dropdown-filter {
-  margin-left: auto;
+/* Dropdown filter styling */
+.dropdown-filter {
+  display: block;
+  max-width: 300px; /* Limit maximum width */
+  width: 100%;
+  margin: 0 auto; /* Center dropdown */
+  position: relative;
+  z-index: 5;
+}
+
+/* Button styling */
+.create-post-btn {
+  position: relative;
+  z-index: 5;
+  background-color: #6b107f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.create-post-btn:hover {
+  background-color: #8e56b1;
+}
+
+/* Main content section */
+.message-board-content {
+  position: relative;
+  z-index: 1;
+  background-color: #fdf0ff;
+  padding: 20px;
+  width: 75%; /* Ensure consistent width */
+  margin: 0 auto; /* Center the content */
+  text-align: left; /* Align text to the left */
+}
+
+/* Cards wrapper */
+.message-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Align cards in the center */
+  margin: 0 auto; /* Center the wrapper */
+  width: 100%; /* Ensure it aligns with content */
+  max-width: 75%; /* Restrict the wrapper to match the message board content */
+  background-color: #fdf0ff;
+}
+
+/* Card styling (if applicable in Card component) */
+.card {
+  width: 100%; /* Ensure individual cards take up available width */
+  max-width: 600px; /* Restrict card width */
+  margin: 0 auto; /* Center the card */
+  background-color: white;
+}
+
+/* Modal styling (if applicable) */
+.post-modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
