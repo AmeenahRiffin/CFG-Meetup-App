@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
-const db = require('././database');
+// const db = require('././database');
 const cors = require('cors');
 const app = express();
 const PORT = 5173;
@@ -11,6 +11,7 @@ const path = require('path');
 const e = require('express');
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
@@ -41,12 +42,9 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false
-}));
 
+
+//login API
 app.get('/', (req, res) => {
     res.send(path.join(__dirname, '.src/webpages/LoginPage.jsx'));
 });
