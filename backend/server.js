@@ -1,12 +1,17 @@
-import express from 'express';
-import session from 'express-session';
-import mysql from 'mysql2';
-import cors from 'cors';
-import dotenv from 'dotenv';
-require('dotenv').config();
+//import express from 'express';
+//import session from 'express-session';
+//import mysql from 'mysql2';
+//import cors from 'cors';
+//import dotenv from 'dotenv';
+//import path from 'path';
 
-import path from 'path';
-// const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const mysql = require('mysql2');
+const cors = require('cors');   
+const path = require('path');
+const dotenv = require('dotenv');
+require('dotenv').config();
 
 const app = express();
 const PORT = 5173;
