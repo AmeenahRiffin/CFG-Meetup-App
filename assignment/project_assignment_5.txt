@@ -11,7 +11,7 @@ The members of this group are:
 - Ameenah Riffin
 - Carly Plumridge
 - Yusra Omar
-- Elizabeth (Libby) Meyers
+- Elisabeth (Libby) Myers
 - Filsan Mohamed
 - Hollie Donnithorne (In order to join our project repository, Hollie has been asked to submit her GitHub credentials;
 but she has not yet done so, so she is not currently able to access the remote repository.
@@ -65,7 +65,7 @@ a feeling of community among the neighbours.
 How are you going to organise the workload? Who does what and
 When?
 
-API/Backend/MySQL database will be done by Ameenah, Elizabeth (Libby) and Carly.
+API/Backend/MySQL database will be done by Ameenah, Elisabeth (Libby) and Carly.
 Frontend will be done by Ameenah, Filsan and Yusra.
 Ameenah has stated that she is willing to work on both sides, frontend and backend.
 Furthermore, Elizabeth (Libby) has stated that she is quite handy at the frontend
