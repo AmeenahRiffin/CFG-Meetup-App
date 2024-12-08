@@ -1,20 +1,13 @@
-//import express from 'express';
-//import session from 'express-session';
-//import mysql from 'mysql2';
-//import cors from 'cors';
-//import dotenv from 'dotenv';
-//import path from 'path';
-
 const express = require('express');
-const session = require('express-session');
 const mysql = require('mysql2');
-const cors = require('cors');   
-const path = require('path');
+const cors = require('cors');
 const dotenv = require('dotenv');
+const session = require('express-session');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5173;
+const PORT = 5000;
 
 app.use(cors());
 
@@ -23,6 +16,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'HomePage')));
 
@@ -30,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'HomePage')));
 In my working copy this was stored as config.env in the same directory as this API.
 */
 
-let env_vars = dotenv.config({ path: './backend/config.env'});
+let env_vars = dotenv.config({ path: './config.env'});
 
 // This creates a connection pool to the database, it's using the credentials from the env file.
 const pool = mysql.createPool({
