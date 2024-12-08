@@ -1,2 +1,2 @@
-npm install && npm install express && npm install mysql2 && npm install cors && npm install dotenv && npm install nodemon && npm install body-parser
-
+npm install && npm install express && npm install express-session && npm install mysql2 && npm install cors && npm install dotenv && npm install nodemon && 
+npm install body-parser && npm install bcrypt && npm install react && npm install react-dom && npm install react-router-dom && npm install express-mysql-session
