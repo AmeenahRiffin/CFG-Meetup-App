@@ -1,89 +1,70 @@
-// UserDisplayView
-
-// This is similar to the event display view, but for users. The apiLink is the most important part of this,
-// as we'll need to specify the users we're getting all of this from. You may choose to expand this. - Ameenah
-
-
-import PropTypes from "prop-types";
-import UserDisplay from "./UserDisplay";
 import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
+import PostDisplay from "./PostDisplay";
 
-
-const UserDisplayView = ({ apiLink = "http://localhost:5000/users", entriesPerPage = 10 }) => {
-    const [users, setUsers] = useState([]); // State to hold user details
-    const [loading, setLoading] = useState(true); // State to indicate loading
-    const [error, setError] = useState(""); // State to handle errors
-    const [page, setPage] = useState(1); // State to keep track of the current page
+const PostDisplayView = ({ apiLink = "http://localhost:5000/posts", postsPerPage = 10 }) => {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        // Fetch user details from the backend using the user id
-        fetch(`${apiLink}`)
-            .then((response) => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch(`${apiLink}`);
                 if (!response.ok) {
-                    throw new Error("Users not found");
+                    throw new Error("Posts not found");
                 }
-                return response.json();
-            })
-            .then((data) => {
-                setUsers(data);
+                const data = await response.json();
+                setPosts(data);
                 setLoading(false);
-            })
-            .catch((err) => {
-                console.error("Error fetching users:", err);
-                setError("Failed to load users.");
+            } catch (err) {
+                console.error("Error fetching posts:", err);
+                setError("Failed to load posts.");
                 setLoading(false);
-            });
-    }, [apiLink, page, entriesPerPage]);
+            }
+        };
 
-    if (loading) return <p>Loading users...</p>;
+        fetchPosts();
+    }, [apiLink, currentPage, postsPerPage]);
+
+    if (loading) return <p>Loading posts...</p>;
     if (error) return <p>{error}</p>;
 
+    // This uses indexing
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-    const handlePageChange = (newPage) => {
-        setPage(newPage);
-    };
-
-    const totalPages = Math.ceil(users.length / entriesPerPage);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="user-display-view">
+        <>
+            <div className="post-display">
+                <ul>
+                    {/* We're getting all the posts we've fetched from the API and using Map (basically a for loop) to display them */}
+                    {currentPosts.map((post, index) => (
+                        <PostDisplay key={index} post_category={post.post_category} post_content={post.post_content} post_date={post.post_date} user_id={post.user_id} />
+                    ))}
+                </ul>
 
-            <div className="user-list">
-                {users.slice(
-                    (page - 1) * entriesPerPage,
-                    page * entriesPerPage
-                ).map((user) => (
-                    <UserDisplay 
-                    key={user.user_id} 
-                    user_f_name={user.user_f_name} 
-                    user_l_name={user.user_l_name} />
-                ))}
             </div>
-            <br />
-            <br />
             <div className="pagination">
-                {Array.from({ length: totalPages }).map((_, idx) => (
-                    <>
-                        <button
-                            key={idx + 1}
-                            onClick={() => handlePageChange(idx + 1)}
-                            className={idx + 1 === page ? "active" : ""}
-                        >
-                            {idx + 1}
-                        </button>
-                    &nbsp;&nbsp;
-                    </>
+                {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, index) => (
+                    <button key={index + 1} onClick={() => {
+                        paginate(index + 1)
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }} className={index + 1 === currentPage ? "active" : ""}>
+                        {index + 1}
+                    </button>
                 ))}
-            </div>
-        </div>
+            </div>        </>
     );
 };
 
-UserDisplayView.propTypes = {
-    apiLink: PropTypes.string, 
-    entriesPerPage: PropTypes.number,
+PostDisplayView.propTypes = {
+    apiLink: PropTypes.string,
+    postsPerPage: PropTypes.number.isRequired,
 };
 
-
-export default UserDisplayView;
-
+export default PostDisplayView;
