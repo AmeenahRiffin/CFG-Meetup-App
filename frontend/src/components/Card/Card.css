@@ -1,0 +1,19 @@
+.messageCard {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 75%;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin: 0 auto;
+}
+
+.messageDetails {
+  margin-top: 10px;
+}
+
+.postCategory,
+.postTitle,
+.postDate {
+  margin: 5px 0;
+}
