@@ -1,109 +1,70 @@
+html,
 body {
-  background-color: #fbe6fe; /* Replace with your desired color */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  background-color: #fbe6fe; /* Ensure this matches the body color if used */
-  min-height: 100vh; /* Ensure it takes full height */
-}
-
-.container {
+.upcoming-events-wrapper {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling on the wrapper */
 }
 
-.logo {
-  width: 280px;
-  height: auto; /* Adjust for responsive logo */
+.upcoming-events-header {
+  margin: 80px 0 0; /* Adjust top margin, remove bottom margin */
+  background-color: #fdf0ff;
+  padding-bottom: 20px; /* Add some padding at the bottom of the header */
 }
 
-/* Main content styling */
-.content {
-  width: 80%;
-  padding: 40px;
-}
-
-/* Heading styling */
-.content h1 {
-  font-size: 26px;
-  color: #6b107f;
-}
-
-/* Event header styling */
-.event-header {
+.header-content {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  margin-bottom: 20px; /* Space below header */
-  padding-right: 50px;
-  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Centering styles for title */
-.event-header h1 {
-  text-align: center; /* Center text */
-  cursor: pointer;
+.upcoming-events-title {
+  margin-bottom: 10px; /* Space below the title */
 }
 
-.event-header h1:hover {
-  color: #8e56b1;
+.header-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Adjust as needed */
+}
+
+.dropdown-filter {
+  padding: 5px;
+  font-size: 16px;
+}
+
+/* Main Content Styles */
+.upcoming-events-content {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px; /* Optional padding for content area */
 }
 
 .event-cards-wrapper {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items horizontally */
-  flex-wrap: wrap; /* Allow wrapping of cards */
-  margin-top: 20px; /* Space above the card section */
-}
-
-.event-cards {
-  display: flex; /* Keep this if you want to manage card layout */
-  gap: 20px; /* Space between individual cards */
-}
-
-/* Filter dropdown styling */
-.filter {
-  margin-top: 10px; /* Space above filter */
-  margin-bottom: 20px;
-}
-
-.filter select {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-/* Event cards styling */
-.eventCards {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping of cards */
+  display: flex; /* Use flexbox for rows */
+  flex-wrap: wrap; /* Allow wrapping to next line if necessary */
+  justify-content: center; /* Center the cards horizontally */
   gap: 20px; /* Space between cards */
+  margin-top: 340px;
 }
 
 .eventCard {
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: calc(50% - 10px); /* Adjust width for responsiveness */
+  background-color: #fbe6fe; /* Example background color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 50px; /* Padding inside each card */
+  max-width: 300px; /* Set a maximum width for each card */
+  width: 250px; /* Set width to be one-third of the row minus gap */
 }
 
+/* Optional styles for event details */
 .eventDetails {
-  padding: 15px; /* Padding inside each event card */
-}
-
-.dateTime {
-  font-size: 14px; /* Smaller font for date/time */
-}
-
-.locationPriceNumber h2 {
-  font-size: 18px; /* Title size */
-}
-
-.locationPriceNumber p {
-  margin-top: 5px; /* Space between paragraphs */
+  display: flex;
+  flex-direction: column;
 }

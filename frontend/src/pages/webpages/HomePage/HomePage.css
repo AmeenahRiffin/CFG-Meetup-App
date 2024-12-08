@@ -13,31 +13,6 @@ body {
   background-color: #fdf0ff;
 }
 
-/* Header Styling */
-header {
-  width: 100%;
-  background-color: rgba(24, 22, 22, 0.9);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  position: relative;
-  /* z-index: 2; */
-  opacity: 0.9;
-}
-
-.header-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.about-btn:hover,
-.login-btn:hover {
-  background-color: #764095;
-}
-
 /* Main Styling */
 main {
   flex: 1;

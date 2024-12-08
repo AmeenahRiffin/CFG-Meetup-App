@@ -1,8 +1,18 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .message-board-wrapper {
   position: relative;
   background-color: #fdf0ff;
   z-index: 1;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Header section */
@@ -21,18 +31,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75%; /* Consistent width for header content */
-  margin: 0 auto; /* Center the content */
-  gap: 10px; /* Add spacing between items */
+  width: 75%;
+  margin: 0 auto;
+  gap: 10px;
   background-color: #fdf0ff;
 }
 
 /* Dropdown filter styling */
 .dropdown-filter {
   display: block;
-  max-width: 300px; /* Limit maximum width */
+  max-width: 300px;
   width: 100%;
-  margin: 0 auto; /* Center dropdown */
+  margin: 0 auto;
   position: relative;
   z-index: 5;
 }
@@ -48,6 +58,7 @@
   cursor: pointer;
   margin: 0 auto;
   display: block;
+  border-radius: 4px;
 }
 
 .create-post-btn:hover {
@@ -59,10 +70,17 @@
   position: relative;
   z-index: 1;
   background-color: #fdf0ff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.message-cards-container {
+  flex: 1;
+  overflow-y: auto;
   padding: 20px;
-  width: 75%; /* Ensure consistent width */
-  margin: 0 auto; /* Center the content */
-  text-align: left; /* Align text to the left */
+  background-color: #fdf0ff;
 }
 
 /* Cards wrapper */
@@ -70,28 +88,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center; /* Align cards in the center */
-  margin: 0 auto; /* Center the wrapper */
-  width: 100%; /* Ensure it aligns with content */
-  max-width: 75%; /* Restrict the wrapper to match the message board content */
-  background-color: #fdf0ff;
-}
-
-/* Card styling (if applicable in Card component) */
-.card {
-  width: 100%; /* Ensure individual cards take up available width */
-  max-width: 600px; /* Restrict card width */
-  margin: 0 auto; /* Center the card */
-  background-color: white;
-}
-
-/* Modal styling (if applicable) */
-.post-modal {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
+  justify-content: center;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 75%;
+  background-color: #fdf0ff;
 }

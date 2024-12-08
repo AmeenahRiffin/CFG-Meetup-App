@@ -13,12 +13,10 @@
 
 import React, { useState } from "react";
 import { events } from "../../../data/eventData"; // Adjusted path based on your folder structure
-import "./UpcomingEvents.css"; // CSS file in the same folder
 import Navbar from "../../../components/Navbar/Navbar";
-import Scroll from "../../../components/Scroll/Scroll";
 import "./UpcomingEvents.css";
 
-function UpcomingEvents() {
+const UpcomingEvents = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // Filter events based on selected category
@@ -27,13 +25,19 @@ function UpcomingEvents() {
     : events;
 
   return (
-    <div className="container">
-      <Navbar /> {/* Using Navbar component */}
-      <main className="content">
-        <div className="event-header">
-          <h1>Upcoming events near you</h1>
-          <div className="filter">
+    <div className="upcoming-events-wrapper">
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Header Section */}
+      <header className="upcoming-events-header">
+        <div className="header-content">
+          <h1 className="upcoming-events-title">Upcoming Events</h1>
+          <div className="header-controls">
+            {" "}
+            {/* Flex container for alignment */}
             <select
+              className="dropdown-filter"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
@@ -46,43 +50,38 @@ function UpcomingEvents() {
             </select>
           </div>
         </div>
+      </header>
 
-        <div class="event-cards-wrapper">
-          <div className="eventCards">
-            {filteredEvents.map((event) => (
-              <div
-                key={event.id}
-                className="eventCard"
-                data-category={event.category}
-              >
-                <div className="eventDetails">
-                  <div className="dateTime">
-                    <span>📅 {event.date}</span>
-                    <br />
-                  </div>
-                  <div className="locationPriceNumber">
-                    <br />
-                    <h2>➡️{event.title}</h2>
-                    <p>➡️{event.description}</p>
-                    <br />
-                    <p>📍 {event.location}</p>
-                    <p>📮 {event.postcode}</p>
-
-                    <p>⏰Start time: {event.startTime} </p>
-                    <p>⏰End time: {event.endTime} </p>
-
-                    <p>🏷️Price: {event.price}</p>
-
-                    <p>{event.number && <p>📞 Contact: {event.number}</p>}</p>
-                  </div>
+      {/* Main Content */}
+      <main className="upcoming-events-content">
+        <div className="event-cards-wrapper">
+          {filteredEvents.map((event) => (
+            <div
+              key={event.id}
+              className="eventCard"
+              data-category={event.category}
+            >
+              <div className="eventDetails">
+                <div className="dateTime">
+                  <span>📅 {event.date}</span>
+                </div>
+                <div className="locationPriceNumber">
+                  <h2>➡️{event.title}</h2>
+                  <p>➡️{event.description}</p>
+                  <p>📍 {event.location}</p>
+                  <p>📮 {event.postcode}</p>
+                  <p>⏰Start time: {event.startTime} </p>
+                  <p>⏰End time: {event.endTime} </p>
+                  <p>🏷️Price: {event.price}</p>
+                  {event.number && <p>📞 Contact: {event.number}</p>}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </main>
     </div>
   );
-}
+};
 
 export default UpcomingEvents;
