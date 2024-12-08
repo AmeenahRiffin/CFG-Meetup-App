@@ -1,13 +1,24 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const session = require('express-session');
+const path = require('path');
+require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
-const dotenv = require('dotenv');
 
 app.use(cors());
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'HomePage')));
 
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
@@ -30,18 +41,61 @@ pool.getConnection((err, connection) => {
         console.error(`Error connecting to the database: ${err}`);
         return;
     }
-
     console.log('Successfully connected to the database');
     connection.release();
 });
 
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+//login API
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '/'));
 });
 
+app.post('/login', async (req, res) => {
+    //get username and password
+    const { username, password } = req.body;
+    if (username && password) {
+    //sql query to throw error if user or password doesn't exist
+        connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+            if (error) throw error;
 
+    //to find existing accounts        
+            if (results.length > 0) {
+                req.session.loggedin = true;
+                req.session.username = username;
+    //direct user to home page            
+                res.redirect('/HomePage');
+            }
+            else {
+                res.send('Incorrect Username and/or Password!');
+            }   
+            res.end();
+        });
+    } else {
+        res.send('Please enter Username and Password!');
+        res.end();
+    }
+});
+
+app.get('/HomePage', (req, res) => {
+    //if logged in
+    if (req.session.loggedin) {
+        res.send(path.join('Welcome ' + req.session.username));
+    } else {
+    //if not logged in    
+        res.send('Please login to view this page!');
+    }
+    res.end();
+});
+
+//API logout to end session
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
+});
+   
 // Endpoints for the API
 
 // This allows you to retrieve all events.
@@ -241,6 +295,11 @@ app.get('/posts/user/:user_id', async (req, res) => {
     }
 });
 
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+
 // TODO: We need to add the ability to register a user, through POST commands.
 
 // POST: Register a new user
@@ -248,4 +307,3 @@ app.get('/posts/user/:user_id', async (req, res) => {
 // POST: Add a new event
 
 // POST: Add a new post
-
