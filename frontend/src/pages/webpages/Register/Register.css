@@ -1,4 +1,3 @@
-/* General Body Styling */
 body {
   margin: 0;
   font-family: Roboto, Arial, sans-serif;
@@ -9,9 +8,6 @@ body {
   background-color: #fdf0ff;
 }
 
-/* Header Styling */
-
-/* Main Styling */
 main {
   background-color: #f9f9f9;
   flex: 1;
@@ -21,7 +17,6 @@ main {
   width: 80%;
 }
 
-/* Form Container Styling */
 .form-container {
   width: 100%;
   max-width: 700px;

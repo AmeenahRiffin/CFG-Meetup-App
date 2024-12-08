@@ -1,46 +1,48 @@
-.form-container {
-  max-width: 800px; /* Maximum width of the form */
-  margin: 20px auto; /* Centering the form */
-  padding: 20px; /* Padding inside the form */
-  background-color: #f9f9f9; /* Light gray background for the form */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.event-form-container {
+  max-width: 800px;
+  margin: 200px auto;
+  padding: 20px;
+  background-color: #efd4ff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  text-align: center; /* Centered title */
+  text-align: center;
 }
 
 .form-columns {
-  display: flex; /* Use flexbox for layout */
+  display: flex;
 }
 
 .form-column {
-  flex: 1; /* Each column takes equal space */
-  padding: 10px; /* Padding between columns */
+  flex: 1;
+  padding: 10px;
 }
 
 input,
 textarea,
 select {
-  width: calc(100% - 20px); /* Full width minus padding */
-  margin-bottom: 15px; /* Space between inputs */
-  padding: 10px; /* Padding for inputs */
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 10px;
 }
 
 .button-container {
-  text-align: center; /* Centering button container */
+  text-align: center;
 }
 
 .button {
-  width: 100%; /* Full width button */
-  padding: 10px; /* Padding for button */
-  background-color: #8e56b1; /* Purple background for button */
-  color: white; /* White text color */
-  border: none; /* No border for button */
-  border-radius: 5px; /* Rounded corners for button */
+  width: 33%;
+  padding: 15px 20px;
+  background-color: #8e56b1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .button:hover {
-  background-color: #764095; /* Darker purple on hover */
+  background-color: #764095;
 }

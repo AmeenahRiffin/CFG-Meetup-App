@@ -8,7 +8,6 @@ const Navbar2 = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar2">
-        {/* Replace <a> tags with <Link> */}
         <Link to="/about" className="navbar2-item">
           About
         </Link>

@@ -1,18 +1,5 @@
-// import React, { useState } from "react";
-// import { events } from "./eventData"; // Ensure this path is correct
-// import "./UpcomingEvents.css"; // Import your CSS file
-// import Navbar from "./navbar/Navbar";
-// import Scroll from "./Scroll/Scroll";
-
-// import React, { useState } from "react";
-// import { events } from "../../data/eventData"; // Adjusted path to eventData.js
-// import "./UpcomingEvents.css"; // CSS file in the same folder
-// import Navbar from "../../components/Navbar/Navbar"; // Correct path to Navbar component
-// import Scroll from "../../components/Scroll/Scroll"; // Correct path to Scroll component
-// import "./UpcomingEvents.css";
-
 import React, { useState } from "react";
-import { events } from "../../../data/eventData"; // Adjusted path based on your folder structure
+import { events } from "../../../data/eventData";
 import Navbar from "../../../components/Navbar/Navbar";
 import "./UpcomingEvents.css";
 
@@ -29,13 +16,11 @@ const UpcomingEvents = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* Header Section */}
       <header className="upcoming-events-header">
         <div className="header-content">
           <h1 className="upcoming-events-title">Upcoming Events</h1>
           <div className="header-controls">
             {" "}
-            {/* Flex container for alignment */}
             <select
               className="dropdown-filter"
               value={selectedCategory}
@@ -52,7 +37,6 @@ const UpcomingEvents = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="upcoming-events-content">
         <div className="event-cards-wrapper">
           {filteredEvents.map((event) => (

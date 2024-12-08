@@ -1,5 +1,5 @@
 import React from "react";
-import "./CreatePostButton.css"; // Import the CSS file
+import "./CreatePostButton.css";
 
 const CreatePostButton = () => {
   return (

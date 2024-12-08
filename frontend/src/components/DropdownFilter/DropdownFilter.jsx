@@ -1,5 +1,5 @@
 import React from "react";
-import "./DropdownFilter.css"; // Assuming you have a CSS file for styling the dropdown
+import "./DropdownFilter.css";
 
 const DropdownFilter = ({ selectedCategory, onCategoryChange }) => {
   return (

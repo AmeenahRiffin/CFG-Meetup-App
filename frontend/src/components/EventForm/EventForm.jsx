@@ -1,5 +1,5 @@
 import React from "react";
-import "./EventForm.css"; // Import the CSS file for styling
+import "./EventForm.css";
 
 const EventForm = () => {
   return (

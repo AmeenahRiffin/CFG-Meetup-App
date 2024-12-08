@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import "./Navbar4.css"; // Reference to Navbar4.css
+import { Link } from "react-router-dom";
+import "./Navbar4.css";
 
 const Navbar4 = () => {
   return (
@@ -8,7 +8,6 @@ const Navbar4 = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar4">
-        {/* Replace <a> tags with <Link> */}
         <Link to="/" className="navbar4-item active">
           Home
         </Link>

@@ -15,7 +15,6 @@ body {
   overflow: hidden;
 }
 
-/* Header section */
 .message-board-header {
   position: relative;
   z-index: 10;
@@ -25,7 +24,6 @@ body {
   background-color: #fdf0ff;
 }
 
-/* Container for header elements */
 .header-content {
   display: flex;
   flex-direction: column;
@@ -37,7 +35,6 @@ body {
   background-color: #fdf0ff;
 }
 
-/* Dropdown filter styling */
 .dropdown-filter {
   display: block;
   max-width: 300px;
@@ -47,7 +44,6 @@ body {
   z-index: 5;
 }
 
-/* Button styling */
 .create-post-btn {
   position: relative;
   z-index: 5;
@@ -65,7 +61,6 @@ body {
   background-color: #8e56b1;
 }
 
-/* Main content section */
 .message-board-content {
   position: relative;
   z-index: 1;
@@ -83,7 +78,6 @@ body {
   background-color: #fdf0ff;
 }
 
-/* Cards wrapper */
 .message-cards-wrapper {
   display: flex;
   flex-wrap: wrap;
