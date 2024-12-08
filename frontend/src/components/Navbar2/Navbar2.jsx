@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar2.css";
 
 const Navbar2 = () => {
@@ -7,18 +8,20 @@ const Navbar2 = () => {
       <span className="logo">The Neighbour Hub</span>
 
       <nav className="navbar2">
-        <a href="landing.html" className="navbar2-item">
-          Home
-        </a>
-        <a href="about.html" className="navbar2-item">
+        <Link to="/about" className="navbar2-item">
           About
-        </a>
-        <a href="message_board.html" className="navbar2-item">
+        </Link>
+        <Link to="/register" className="navbar2-item">
+          Register
+        </Link>
+        <Link to="/login" className="navbar2-item">
           Login
-        </a>
+        </Link>
       </nav>
     </header>
   );
 };
 
 export default Navbar2;
+
+

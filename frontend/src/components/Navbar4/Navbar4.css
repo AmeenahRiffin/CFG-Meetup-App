@@ -15,7 +15,6 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
 .header {
   position: fixed;
   top: 0;
@@ -29,20 +28,19 @@ body {
   z-index: 100;
 }
 
-/* Logo */
 .logo {
-  font-size: 32px;
+  font-size: 20px;
   color: #8e56b1;
   font-weight: 700;
   cursor: pointer;
   margin-right: auto;
+  width: 200px;
 }
 
 .logo:hover {
   color: #e39ff6;
 }
 
-/* Navbar4 */
 .navbar4 {
   display: flex;
   justify-content: center;
@@ -67,7 +65,6 @@ body {
   margin-left: 40px;
 }
 
-/* Underline Hover Effect */
 .navbar4 a::before {
   content: "";
   position: absolute;

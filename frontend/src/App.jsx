@@ -1,37 +1,47 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar2 from "./components/Navbar2/Navbar2";
-import Navbar3 from "./components/Navbar3/Navbar3";
-import Navbar4 from "./components/Navbar4/Navbar4";
-import Navbar5 from "./components/Navbar5/Navbar5";
-import HomePage from "./components/Webpages/HomePage";
-import AboutPage from "./components/Webpages/AboutPage";
-import RegisterPage from "./components/Webpages/RegisterPage";
-import LoginPage from "./components/Webpages/LoginPage";
-import './components/Styles/homepage.css'
-import './components/Styles/aboutpage.css'
-import './components/Styles/registerpage.css'
-import './components/Styles/loginpage.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Importing components from the webpages directory
+import About from "./webpages/About/About";
+import CreateEvent from "./webpages/CreateEvent/CreateEvent";
+import HomePage from "./webpages/HomePage/HomePage";
+import Login from "./webpages/Login/Login";
+import MessageBoard from "./webpages/MessageBoard/MessageBoard";
+import Register from "./webpages/Register/Register";
+import UpcomingEvents from "./webpages/UpcomingEvents/UpcomingEvents";
 
-const App = () => {
+// Importing styles
+import "./App.css";
+
+const App = () =>{
+
   return (
-    <div>
-      <Navbar2 />
-      <Navbar3 />
-      <Navbar4 />
-      <Navbar5 />
-      <Navbar5 />
-      <Router>
+
+    <Router>
+      <main className="App">
+
         <Routes>
+
+          {/* Public routes */}
+
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/message-board" element={<MessageBoard />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/upcoming-events" element={<UpcomingEvents />} />
+
+
+          {/* Fallback route for undefined paths */}
+         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+
         </Routes>
-      </Router>
-    </div>
+
+      </main>
+
+    </Router>
   );
-};
+}
 
 export default App;

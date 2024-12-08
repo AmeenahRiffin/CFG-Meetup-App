@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: Roboto, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: url('../images/landing-bg.png') no-repeat center center/cover; assets images not showing up*/
+    height: 100vh;
+    color: #333;
+    overflow: hidden; /* Prevent scrolling */
+}
+   /* Main Styling */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    position: relative;
+    z-index: 1;
+}
+.homepage-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    text-align: center;
+    opacity: 0.9;
+    margin-top: 50px; /* Move container closer to the top */
+    position: relative;
+}
+.homepage-container p {
+    margin: 10px 0;
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.register-btn {
+    position: fixed; /* Position relative to the viewport */
+    bottom: 20%; /* 20% from the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 60px;
+    padding: 15px;
+    background-color: #8e56b1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 24px;
+}
+.register-btn:hover {
+    background-color: #764095;
+}

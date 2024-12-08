@@ -28,11 +28,12 @@ body {
   z-index: 100;
 }
 .logo {
-  font-size: 32px;
+  font-size: 20px;
   color: #8e56b1;
   font-weight: 700;
-  cursor: pointer; /* Pointer cursor on hover */
+  cursor: pointer;
   margin-right: auto;
+  width: 200px;
 }
 
 .logo:hover {
@@ -40,19 +41,19 @@ body {
 }
 
 .navbar2 {
-  display: flex; /* Arrange items in a row */
-  justify-content: center; /* Center the items horizontally */
-  align-items: center; /* Align items vertically */
-  gap: 30px; /* Add uniform spacing between items */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
 .navbar2-item {
   font-size: 16px;
-  cursor: pointer; /* Pointer cursor on hover */
+  cursor: pointer;
 }
 
 .navbar2-item:hover {
-  color: #e39ff6; /* Text changes to light purple */
+  color: #e39ff6;
 }
 
 .navbar2 a {
