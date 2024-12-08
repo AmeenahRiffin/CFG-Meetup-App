@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PostModal.css";
 
 const PostModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null; // Don't render anything if the modal is not open
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log({ title, content, category });
+
+    setTitle("");
+    setContent("");
+    setCategory("");
+    onClose();
+  };
+
+  if (!isOpen) return null;
 
   return (
-    <div className="modal" id="post-modal" style={{ display: "flex" }}>
+    <div className="modal" id="post-modal">
       <div className="modal-content">
         <div className="modal-header">
           <h2>Create a Post</h2>
@@ -13,15 +28,26 @@ const PostModal = ({ isOpen, onClose }) => {
             X
           </button>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <textarea
             placeholder="Enter your title here"
             required
             style={{ height: "25px" }}
-          ></textarea>
-          <textarea placeholder="Share what's on your mind" required></textarea>
-          <select required>
-            <option value="" disabled selected>
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Share what's on your mind"
+            required
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <select
+            required
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="" disabled>
               Choose category of post
             </option>
             <option value="Schools & Education">Schools & Education</option>

@@ -1,47 +1,60 @@
 .modal {
-  position: fixed; /* Position the modal */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex; /* Center the modal */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
-  background-color: #fbe6fe; /* Purple background for modal content */
-  color: white; /* Text color */
-  padding: 20px; /* Padding inside the modal */
-  border-radius: 5px; /* Rounded corners */
-  width: 400px; /* Set a width for the modal */
+  background-color: #fbe6fe;
+  color: #6b107f;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 400px;
 }
 
 .modal-header {
-  display: flex; /* Flexbox for header layout */
-  justify-content: space-between; /* Space between title and close button */
-  color: #6b107f;
+  display: flex;
+  justify-content: space-between;
 }
 
 .close-btn {
-  background-color: transparent; /* Transparent background for close button */
-  color: #6b107f; /* Close button text color */
-  border: none; /* No border */
-  cursor: pointer; /* Pointer cursor on hover */
+  background-color: transparent;
+  color: #6b107f;
+  border: none;
+  cursor: pointer;
 }
 
 textarea {
-  width: 100%; /* Full width for text areas */
-  padding-top: 15px; /* Padding inside text area for better appearance */
+  width: 100%;
+  padding-top: 15px;
   padding-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .submit-post-btn {
-  background-color: #6b107f; /* Purple background for submit button */
-  color: white; /* Text color for submit button */
-  border: none; /* No border */
-  padding: 10px; /* Padding for submit button */
-  border-radius: 5px; /* Rounded corners for submit button */
-  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #6b107f;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+  }
+
+  .submit-post-btn {
+    width: auto;
+  }
 }

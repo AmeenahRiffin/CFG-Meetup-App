@@ -1,14 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import Navbar4 from './../../components/Navbar4/Navbar4';
+import { useNavigate } from 'react-router-dom';
+import Navbar4 from '../../components/Navbar4/Navbar4';
 import './Register.css';
 
 const Register = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleRegisterSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    navigate("/login"); // Navigate to the login page
+    e.preventDefault();
+    navigate("/login");
   };
 
   return (

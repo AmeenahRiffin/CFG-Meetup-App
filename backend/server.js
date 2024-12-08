@@ -3,19 +3,13 @@ import session from 'express-session';
 import mysql from 'mysql2';
 import cors from 'cors';
 import dotenv from 'dotenv';
+require('dotenv').config();
+
 import path from 'path';
+// const path = require('path');
 
-
-// const express = require('express');
-// const session = require('express-session');
-// const mysql = require('mysql2');
-// const db = require('././database');
-// const cors = require('cors');
 const app = express();
 const PORT = 5173;
-// const dotenv = require('dotenv');
-require('dotenv').config();
-// const path = require('path');
 
 app.use(cors());
 

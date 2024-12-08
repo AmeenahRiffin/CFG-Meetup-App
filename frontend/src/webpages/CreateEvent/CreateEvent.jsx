@@ -15,7 +15,7 @@ const CreateEvent = () => {
   return (
     <>
       <Navbar />
-      <div className="form-container">
+      <div className="event-form-container">
         <h2>Create an Event</h2>
         <form className="event-form" onSubmit={handleEventSubmit}>
           <div className="form-columns">
@@ -24,16 +24,10 @@ const CreateEvent = () => {
               <input type="tel" placeholder="Phone Number" required />
               <input type="email" placeholder="Email Address" required />
               <input type="date" placeholder="Event Date" required />
-              <div className="time-input">
-                <label>Start Time</label>
-                <input type="time" required />
-              </div>
+              <input type="time" placeholder="Start Time" required />
             </div>
             <div className="form-column">
-              <div className="time-input">
-                <label>End Time</label>
-                <input type="time" required />
-              </div>
+              <input type="time" placeholder="End Time" required />
               <input type="text" placeholder="Location" required />
               <input type="text" placeholder="Postcode" required />
               <input type="number" placeholder="Price" required />
@@ -57,7 +51,9 @@ const CreateEvent = () => {
             </select>
           </div>
           <div className="button-container">
-            <button type="submit">Submit</button>
+            <button type="submit" className="button">
+              Submit
+            </button>
           </div>
         </form>
       </div>
