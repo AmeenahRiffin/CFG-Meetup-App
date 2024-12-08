@@ -1,6 +1,6 @@
-import React from "react";
-import Navbar2 from "../../../components/Navbar2/Navbar2";
-import "./HomePage.css";
+import React from 'react';
+import Navbar2 from '../../components/Navbar2/Navbar2';
+import './HomePage.css';
 
 const HomePage = () => {
   return (

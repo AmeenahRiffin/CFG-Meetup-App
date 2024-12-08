@@ -22,7 +22,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
-import Navbar5 from "../../../components/Navbar5/Navbar5";
+import Navbar5 from "../../components/Navbar5/Navbar5";
 import "./Login.css";
 
 const Login = () => {

@@ -11,12 +11,12 @@
 // import Scroll from "../../components/Scroll/Scroll"; // Correct path to Scroll component
 // import "./UpcomingEvents.css";
 
-import React, { useState } from "react";
-import { events } from "../../../data/eventData"; // Adjusted path based on your folder structure
+import React, { useState } from 'react';
+import { events } from '../../Data/eventData'; // Adjusted path based on your folder structure
 import "./UpcomingEvents.css"; // CSS file in the same folder
-import Navbar from "../../../components/Navbar/Navbar";
-import Scroll from "../../../components/Scroll/Scroll";
-import "./UpcomingEvents.css";
+import Navbar from '../../components/Navbar/Navbar';
+import Scroll from '../../components/Scroll/Scroll';
+import './UpcomingEvents.css';
 
 function UpcomingEvents() {
   const [selectedCategory, setSelectedCategory] = useState("");

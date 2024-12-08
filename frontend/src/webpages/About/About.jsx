@@ -1,6 +1,5 @@
-import React from "react";
-import Navbar3 from "../../../components/Navbar3/Navbar3";
-import "./About.css";
+import Navbar3 from '../../components/Navbar3/Navbar3';
+import './About.css';
 
 const About = () => {
   return (
