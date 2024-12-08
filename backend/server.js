@@ -307,4 +307,3 @@ app.listen(PORT, () => {
 // POST: Add a new event
 
 // POST: Add a new post
-

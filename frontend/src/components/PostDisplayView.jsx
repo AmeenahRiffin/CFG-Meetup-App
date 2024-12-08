@@ -51,12 +51,14 @@ const PostDisplayView = ({ apiLink = "http://localhost:5000/posts", postsPerPage
             </div>
             <div className="pagination">
                 {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, index) => (
-                    <button key={index + 1} onClick={() => paginate(index + 1)} className={index + 1 === currentPage ? "active" : ""}>
+                    <button key={index + 1} onClick={() => {
+                        paginate(index + 1)
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }} className={index + 1 === currentPage ? "active" : ""}>
                         {index + 1}
                     </button>
                 ))}
-            </div>
-        </>
+            </div>        </>
     );
 };
 
