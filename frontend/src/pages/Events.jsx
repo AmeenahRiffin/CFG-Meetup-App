@@ -8,6 +8,7 @@ const Events = () => {
 
         <button>Create Event</button>
 
+    
         <EventDisplayView entriesPerPage={8}/>
             
         </div>
