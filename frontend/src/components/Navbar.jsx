@@ -3,7 +3,7 @@ const Navbar = () => {
     return (
     <nav className="navbar">
         <div className="navbar-logo">
-            <div>NeighbourHub</div>
+            <div><a href="/">NeighbourHub</a></div>
         </div>
         <div className="navbar-links">
             <a href="/">Home</a>
