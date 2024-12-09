@@ -8,7 +8,7 @@ const Posts = () => {
 
         <button>Create New Post</button>
 
-        <PostDisplayView api={`http://localhost:5000/posts`} entriesPerPage={3} />
+        <PostDisplayView entriesPerPage={3} />
             
         </div>
     </>

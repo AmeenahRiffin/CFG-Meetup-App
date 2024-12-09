@@ -8,7 +8,7 @@ const Events = () => {
 
         <button>Create Event</button>
 
-        <EventDisplayView apiLink='http://localhost:5000/events' entriesPerPage={8}/>
+        <EventDisplayView entriesPerPage={8}/>
             
         </div>
     </>
