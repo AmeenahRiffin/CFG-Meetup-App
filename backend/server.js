@@ -1,20 +1,23 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const app = express();
 const session = require('express-session');
 const PORT = 3000; // it's over 9000
 const dotenv = require('dotenv');
 const path = require('path');
+const bcrypt = require('bcrypt');
 
-app.use(cors());
+app.use(cors({
+    origin: `http://localhost:${PORT}`,
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'HomePage')));
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
+app.use(cookieParser());
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
 */
@@ -31,46 +34,47 @@ const pool = mysql.createPool({
 });
 
 // Adds Libby's login api WIP
+const verifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({error: 'Unauthorised'});
+    }
+    try {
+        const decoded = jwt.verify(token, 'jwt-secret-key');
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(401).json({error: 'Unauthorised'});
+    }
+}
 
-//login API
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '.src/pages/Login.jsx'));
-});
+app.get('http://localhost:3000', verifyUser, (req, res) => {
+return res.json({Status: "Successfully logged in"});
+})
 
-app.post('/login', async (req, res) => {
-    //get username and password
-    const { username, password } = req.body;
-    if (username && password) {
-    //sql query to throw error if user or password doesn't exist
-        connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
-            if (error) throw error;
 
-    //to find existing accounts        
+    app.post('/login', (req, res) => {
+        const sql = 'SELECT * FROM users WHERE username = ?';
+        pool.query(sql, [req.body.username], (err, results) => {
+            if (err) return res.json({Error: "Error logging in"});
             if (results.length > 0) {
-                req.session.loggedin = true;
-                req.session.username = username;
-    //direct user to home page            
-                res.redirect('/HomePage');
-            }
-            else {
-                res.send('Incorrect Username and/or Password!');
-            }   
-            res.end();
-        });
-    } else {
-        res.send('Please enter Username and Password!');
-        res.end();
-    }
-});
 
-app.get('/HomePage', (req, res) => {
-    if (req.session.loggedin) {
-        res.send(path.join(__dirname, '.src/webpages/HomePage.jsx'));
-    } else {
-        res.send('Please login to view this page!');
-    }
-    res.end();
-});
+                bcrypt.compare(req.body.password.toString(), results[0].password, (error, response) => {
+                    if (error) return res.json({Error: "Password comparison error"});
+                    if (response) {
+                        const name = results[0].username;
+                        const token = jwt.sign({username}, "jwt-secret-key", { expiresIn: '1h' });
+                        res.cookie('token', token);
+                        return res.json({Status: "Successfully logged in"});
+                    } else {
+                        return res.json({Error: "Password does not match"});
+                    }
+                });
+            } else {
+                return res.json({Error: "User does not exist"});
+            }
+        });
+    });
 
 //API logout to end session
 
@@ -297,8 +301,6 @@ app.get('/posts/user/:user_id', async (req, res) => {
     }
 });
 
-// TODO: We need to add the ability to register a user, through POST commands.
-
 app.post('/api/register', async (req, res) => {
     const { firstName, lastName, dob, postcode, email, password } = req.body;
 
@@ -329,6 +331,8 @@ app.post('/api/register', async (req, res) => {
         res.status(500).send('An error occurred during registration.');
     }
 });
+
+
 
 // POST: Add a new event
 
