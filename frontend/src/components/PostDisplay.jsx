@@ -23,4 +23,3 @@ PostDisplay.propTypes = {
 };
 
 export default PostDisplay;
-

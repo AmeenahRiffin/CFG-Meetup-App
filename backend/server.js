@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
 const session = require('express-session');
-const PORT = 9001; // it's over 9000
+const PORT = 3000; // it's over 9000
 const dotenv = require('dotenv');
 const path = require('path');
 
@@ -299,7 +299,36 @@ app.get('/posts/user/:user_id', async (req, res) => {
 
 // TODO: We need to add the ability to register a user, through POST commands.
 
-// POST: Register a new user
+app.post('/api/register', async (req, res) => {
+    const { firstName, lastName, dob, postcode, email, password } = req.body;
+
+    if (!firstName || !lastName || !dob || !postcode || !email || !password) {
+        return res.status(400).send('All fields are required.');
+    }
+
+    try {
+        // Check if email already exists
+        const [existingUser] = await pool.promise().query('SELECT * FROM users WHERE user_email = ?', [email]);
+        if (existingUser.length > 0) {
+            return res.status(400).send('Email is already registered.');
+        }
+
+        // Hash the password for security
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert new user into database
+        const query = `
+            INSERT INTO users (user_f_name, user_l_name, user_dob, user_postcode, user_email, user_password)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `;
+        await pool.promise().query(query, [firstName, lastName, dob, postcode, email, hashedPassword]);
+
+        res.status(201).send('Registration successful!');
+    } catch (error) {
+        console.error('Error during registration:', error);
+        res.status(500).send('An error occurred during registration.');
+    }
+});
 
 // POST: Add a new event
 
