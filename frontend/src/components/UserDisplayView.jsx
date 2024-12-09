@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import PostDisplay from "./PostDisplay";
 
-const PostDisplayView = ({ apiLink = "http://localhost:5000/posts", postsPerPage = 10 }) => {
+const PostDisplayView = ({ apiLink = "http://localhost:9001/posts", postsPerPage = 10 }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");

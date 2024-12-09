@@ -10,7 +10,7 @@ const UserDisplayViewSingle = ({ userId }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/users/user_id/${userId}`);
+                const response = await fetch(`http://localhost:9001/users/user_id/${userId}`);
                 if (!response.ok) {
                     throw new Error('User not found');
                 }

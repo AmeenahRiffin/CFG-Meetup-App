@@ -1,14 +1,20 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-
 const app = express();
-const PORT = 5000;
+const session = require('express-session');
+const PORT = 9001; // it's over 9000
 const dotenv = require('dotenv');
+const path = require('path');
 
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, 'HomePage')));
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
 */
@@ -22,6 +28,56 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     connectionLimit: 10,
+});
+
+// Adds Libby's login api WIP
+
+//login API
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '.src/pages/Login.jsx'));
+});
+
+app.post('/login', async (req, res) => {
+    //get username and password
+    const { username, password } = req.body;
+    if (username && password) {
+    //sql query to throw error if user or password doesn't exist
+        connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+            if (error) throw error;
+
+    //to find existing accounts        
+            if (results.length > 0) {
+                req.session.loggedin = true;
+                req.session.username = username;
+    //direct user to home page            
+                res.redirect('/HomePage');
+            }
+            else {
+                res.send('Incorrect Username and/or Password!');
+            }   
+            res.end();
+        });
+    } else {
+        res.send('Please enter Username and Password!');
+        res.end();
+    }
+});
+
+app.get('/HomePage', (req, res) => {
+    if (req.session.loggedin) {
+        res.send(path.join(__dirname, '.src/webpages/HomePage.jsx'));
+    } else {
+        res.send('Please login to view this page!');
+    }
+    res.end();
+});
+
+//API logout to end session
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
 });
 
 // Check pool connection and print result

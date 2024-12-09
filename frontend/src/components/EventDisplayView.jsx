@@ -12,7 +12,7 @@ import EventDisplay from "./EventDisplay";
 import { useState, useEffect } from "react";
 
 const EventDisplayView = ({ 
-    apiLink = "http://localhost:5000/events", 
+    apiLink = "http://localhost:9001/events", 
     entriesPerPage = 10, 
     showEventDate = true, 
     showEventLocation = true, 
