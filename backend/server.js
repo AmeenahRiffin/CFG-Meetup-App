@@ -2,25 +2,26 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
-const session = require('express-session');
-const PORT = 9001; // it's over 9000
+const PORT = 3000; // it's over 9000
+const FRONTEND_PORT = 5173;
 const dotenv = require('dotenv');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
-app.use(cors());
+
+app.use(cors({
+    origin: `http://localhost:${FRONTEND_PORT}`,
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'HomePage')));
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
+
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
 */
-
-let env_vars = dotenv.config({ path: './config.env'});
+dotenv.config({ path: './config.env'});
 
 // This creates a connection pool to the database, it's using the credentials from the env file.
 const pool = mysql.createPool({
@@ -32,45 +33,50 @@ const pool = mysql.createPool({
 });
 
 // Adds Libby's login api WIP
-
-//login API
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '.src/pages/Login.jsx'));
-});
-
-app.post('/login', async (req, res) => {
-    //get username and password
-    const { username, password } = req.body;
-    if (username && password) {
-    //sql query to throw error if user or password doesn't exist
-        connction.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
-            if (error) throw error;
-
-    //to find existing accounts        
-            if (results.length > 0) {
-                req.session.loggedin = true;
-                req.session.username = username;
-    //direct user to home page            
-                res.redirect('/HomePage');
-            }
-            else {
-                res.send('Incorrect Username and/or Password!');
-            }   
-            res.end();
-        });
-    } else {
-        res.send('Please enter Username and Password!');
-        res.end();
+/* const verifyUser = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({error: 'Unauthorised'});
     }
-});
-
-app.get('/HomePage', (req, res) => {
-    if (req.session.loggedin) {
-        res.send(path.join(__dirname, '.src/webpages/HomePage.jsx'));
-    } else {
-        res.send('Please login to view this page!');
+    try {
+        const decoded = jwt.verify(token, 'jwt-secret-key');
+        req.user = decoded;
+        next();
+    } catch (error) {
+        return res.status(401).json({error: 'Unauthorised'});
     }
-    res.end();
+}
+
+ app.get('http://localhost:3000', verifyUser, (req, res) => {
+    return res.json({Status: "Successfully logged in"});
+}) */
+
+app.post('/login', (req, res) => {
+    
+    const sql = 'SELECT * FROM users WHERE user_email = ?';
+    
+    pool.query(sql, [req.body.username], (err, results) => {
+
+        if (err) return res.json({Message: "Error logging in", Success: false});
+
+        if (results.length > 0) {
+
+            bcrypt.compare(req.body.password.toString(), results[0].user_password, (error, response) => {
+
+                if (error) return res.json({Message: "Password comparison error", Success: false});
+                if (response) {
+                    //const name = results[0].username;
+                    //const token = jwt.sign({username}, "jwt-secret-key", { expiresIn: '1h' });
+                    //res.cookie('token', token);
+                    return res.json({Message: "Successfully logged in", Success: true});
+                } else {
+                    return res.json({Message: "Password does not match", Success: false});
+                }
+            });
+        } else {
+            return res.json({Message: "User does not exist", Success: false});
+        }
+    });
 });
 
 //API logout to end session
@@ -92,12 +98,9 @@ pool.getConnection((err, connection) => {
     connection.release();
 });
 
-
-
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
 
 // Endpoints for the API
 
@@ -125,7 +128,6 @@ app.get('/events/category/:event_type', async (req, res) => {
     }
 });
 
-
 // This retrieves events by event ID
 app.get('/events/event_id/:event_id', async (req, res) => {
     try {
@@ -150,7 +152,6 @@ app.get('/users', async (req, res) => {
     }
 });
 
-
 // This retrieves users by user ID
 app.get('/users/user_id/:user_id', async (req, res) => {
     try {
@@ -164,7 +165,6 @@ app.get('/users/user_id/:user_id', async (req, res) => {
         res.status(400).json({error: error.message});
     }
 });
-
 
 // This retrieves users by postcode
 app.get('/users/postcode/:postcode', async (req, res) => {
@@ -180,7 +180,6 @@ app.get('/users/postcode/:postcode', async (req, res) => {
     }
 });
 
-
 // This retrieves events by postcode
 app.get('/events/postcode/:postcode', async (req, res) => {
     try {
@@ -194,7 +193,6 @@ app.get('/events/postcode/:postcode', async (req, res) => {
         res.status(400).json({error: error.message});
     }
 });
-
 
 // Get events matching user's postcode and nearest postcodes, uses the postcodes.io API to help find the nearest postcodes to a user's postcode.
 // Then it searches for events that match any of those postcodes. 
@@ -331,11 +329,6 @@ app.post('/api/register', async (req, res) => {
 
 
 
-// TODO: We need to add the ability to register a user, through POST commands.
-
-// POST: Register a new user
-
 // POST: Add a new event
 
 // POST: Add a new post
-

@@ -8,7 +8,7 @@ const Posts = () => {
 
         <button>Create New Post</button>
 
-        <PostDisplayView entriesPerPage={3} />
+        <PostDisplayView postsPerPage={3} />
             
         </div>
     </>

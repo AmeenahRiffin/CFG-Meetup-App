@@ -1,4 +1,3 @@
-// TODO: Add conditional for logged in users, so different options show up.
 const Navbar = () => {
     return (
     <nav className="navbar">

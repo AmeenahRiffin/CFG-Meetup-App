@@ -1,4 +1,3 @@
-backend/database.js
 backend/config.env
 # Logs
 logs

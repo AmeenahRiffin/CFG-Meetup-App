@@ -1,4 +1,23 @@
-const Home = () => {
+import { useState, useEffect } from "react";
+import axios from "axios";
+  
+
+
+  const Home = () => {
+     const [auth, setAuth] = useState(false);
+      const [message, setMessage] = useState("");
+      const [user, setUser] = useState({});
+
+      useEffect(() => {
+        axios.get('/').then(res => {
+          if (res.data.status === 200) {
+            setAuth(true);
+            setUser(res.data.User);
+            navigate('/login');
+          }
+      });
+   }); 
+
     return (
      <>
         <div className="container">
