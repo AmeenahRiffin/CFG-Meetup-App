@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
+
 app.use(cors({
     origin: `http://localhost:${FRONTEND_PORT}`,
     methods: ['GET', 'POST'],
@@ -325,6 +326,7 @@ app.post('/api/register', async (req, res) => {
         res.status(500).send('An error occurred during registration.');
     }
 });
+
 
 
 // POST: Add a new event
