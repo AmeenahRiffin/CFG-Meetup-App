@@ -1,28 +1,26 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
 const app = express();
-const session = require('express-session');
 const PORT = 3000; // it's over 9000
+const FRONTEND_PORT = 5173;
 const dotenv = require('dotenv');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
 app.use(cors({
-    origin: `http://localhost:${PORT}`,
+    origin: `http://localhost:${FRONTEND_PORT}`,
     methods: ['GET', 'POST'],
     credentials: true
 }));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'HomePage')));
-app.use(cookieParser());
+
 /* For security reasons, I'm using dotenv to hide our database credentials. 
 In my working copy this was stored as config.env in the same directory as this API.
 */
-
-let env_vars = dotenv.config({ path: './config.env'});
+dotenv.config({ path: './config.env'});
 
 // This creates a connection pool to the database, it's using the credentials from the env file.
 const pool = mysql.createPool({
@@ -34,7 +32,7 @@ const pool = mysql.createPool({
 });
 
 // Adds Libby's login api WIP
-const verifyUser = (req, res, next) => {
+/* const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({error: 'Unauthorised'});
@@ -48,33 +46,37 @@ const verifyUser = (req, res, next) => {
     }
 }
 
-app.get('http://localhost:3000', verifyUser, (req, res) => {
-return res.json({Status: "Successfully logged in"});
-})
+ app.get('http://localhost:3000', verifyUser, (req, res) => {
+    return res.json({Status: "Successfully logged in"});
+}) */
 
+app.post('/login', (req, res) => {
+    
+    const sql = 'SELECT * FROM users WHERE user_email = ?';
+    
+    pool.query(sql, [req.body.username], (err, results) => {
 
-    app.post('/login', (req, res) => {
-        const sql = 'SELECT * FROM users WHERE username = ?';
-        pool.query(sql, [req.body.username], (err, results) => {
-            if (err) return res.json({Error: "Error logging in"});
-            if (results.length > 0) {
+        if (err) return res.json({Message: "Error logging in", Success: false});
 
-                bcrypt.compare(req.body.password.toString(), results[0].password, (error, response) => {
-                    if (error) return res.json({Error: "Password comparison error"});
-                    if (response) {
-                        const name = results[0].username;
-                        const token = jwt.sign({username}, "jwt-secret-key", { expiresIn: '1h' });
-                        res.cookie('token', token);
-                        return res.json({Status: "Successfully logged in"});
-                    } else {
-                        return res.json({Error: "Password does not match"});
-                    }
-                });
-            } else {
-                return res.json({Error: "User does not exist"});
-            }
-        });
+        if (results.length > 0) {
+
+            bcrypt.compare(req.body.password.toString(), results[0].user_password, (error, response) => {
+
+                if (error) return res.json({Message: "Password comparison error", Success: false});
+                if (response) {
+                    //const name = results[0].username;
+                    //const token = jwt.sign({username}, "jwt-secret-key", { expiresIn: '1h' });
+                    //res.cookie('token', token);
+                    return res.json({Message: "Successfully logged in", Success: true});
+                } else {
+                    return res.json({Message: "Password does not match", Success: false});
+                }
+            });
+        } else {
+            return res.json({Message: "User does not exist", Success: false});
+        }
     });
+});
 
 //API logout to end session
 
@@ -95,12 +97,9 @@ pool.getConnection((err, connection) => {
     connection.release();
 });
 
-
-
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
 
 // Endpoints for the API
 
@@ -128,7 +127,6 @@ app.get('/events/category/:event_type', async (req, res) => {
     }
 });
 
-
 // This retrieves events by event ID
 app.get('/events/event_id/:event_id', async (req, res) => {
     try {
@@ -153,7 +151,6 @@ app.get('/users', async (req, res) => {
     }
 });
 
-
 // This retrieves users by user ID
 app.get('/users/user_id/:user_id', async (req, res) => {
     try {
@@ -167,7 +164,6 @@ app.get('/users/user_id/:user_id', async (req, res) => {
         res.status(400).json({error: error.message});
     }
 });
-
 
 // This retrieves users by postcode
 app.get('/users/postcode/:postcode', async (req, res) => {
@@ -183,7 +179,6 @@ app.get('/users/postcode/:postcode', async (req, res) => {
     }
 });
 
-
 // This retrieves events by postcode
 app.get('/events/postcode/:postcode', async (req, res) => {
     try {
@@ -197,7 +192,6 @@ app.get('/events/postcode/:postcode', async (req, res) => {
         res.status(400).json({error: error.message});
     }
 });
-
 
 // Get events matching user's postcode and nearest postcodes, uses the postcodes.io API to help find the nearest postcodes to a user's postcode.
 // Then it searches for events that match any of those postcodes. 
@@ -333,8 +327,6 @@ app.post('/api/register', async (req, res) => {
 });
 
 
-
 // POST: Add a new event
 
 // POST: Add a new post
-

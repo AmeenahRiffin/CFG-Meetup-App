@@ -4,7 +4,7 @@ import axios from "axios";
 
 
   const Home = () => {
-      const [auth, setAuth] = useState(false);
+     const [auth, setAuth] = useState(false);
       const [message, setMessage] = useState("");
       const [user, setUser] = useState({});
 
@@ -14,13 +14,9 @@ import axios from "axios";
             setAuth(true);
             setUser(res.data.User);
             navigate('/login');
-          } /* else {
-            setAuth(false);
-            setMessage(res.data.Error);
-            alert("error")
-        } */
-      })
-    })
+          }
+      });
+   }); 
 
     return (
      <>
