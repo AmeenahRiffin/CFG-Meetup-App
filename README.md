@@ -1,5 +1,6 @@
 # CFG-Meetup-App
 A web application for managing and viewing meetup events, built with a Node.js backend and a React.js frontend. The project uses MySQL for the database, Express.js for the REST API, and Bootstrap for the UI styling. This is a group assignment, our contributors are:
+![image](https://github.com/user-attachments/assets/f75765a6-dc45-45ae-9317-d421813d1e50)
 
 - Ameenah
 - Libby
